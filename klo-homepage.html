@@ -616,25 +616,7 @@
 
 
 
-const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');  hamburger.addEventListener('click', () => {
-    const isOpen = hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', isOpen);
-  });  document.querySelectorAll('.mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-    });
-  });  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 12) {
-      navbar.style.boxShadow = '0 8px 24px rgba(1,20,37,0.06)';
-    } else {
-      navbar.style.boxShadow = 'none';
-    }
-  });
+
 </script><div class="toast" id="toast">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
   <span id="toast-msg">Message</span>
