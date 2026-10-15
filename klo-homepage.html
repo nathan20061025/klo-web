@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KLO — Keep Live Old</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231f4959'/%3E%3Ctext x='50' y='69' font-size='56' font-family='Georgia,serif' fill='white' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Timeless, durable clothing built to last and made to be repaired, not replaced.">
+  <meta property="og:title" content="KLO — Keep Live Old">
+  <meta property="og:description" content="Timeless, durable clothing built to last and made to be repaired, not replaced.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="KLO">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+    --bg:#ffffff;
+    --ink:#242424;
+    --slate:#5c7c89;
+    --teal:#1f4959;
+    --midnight:#011425;
+    --hairline: rgba(36,36,36,0.12);
+    --hairline-light: rgba(255,255,255,0.16);
+  }  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk',sans-serif;
+    letter-spacing:-0.01em;
+  }
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit;border:none;cursor:pointer;background:none;color:inherit;}
+  img{display:block;max-width:100%;}
+  .container{max-width:1320px;margin:0 auto;padding:0 32px;}  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+    html{scroll-behavior:auto;}
+  }  :focus-visible{outline:2px solid var(--slate); outline-offset:3px;}  /* ===== STITCH DIVIDER — signature element ===== */
+  .stitch{
+    width:100%;
+    height:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .stitch svg{width:100%; height:18px; display:block;}  /* ===== NAVBAR ===== */
+  .navbar{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:1000;
+    background:rgba(255,255,255,0.88);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--hairline);
+    transition: background 0.3s ease, box-shadow .3s ease;
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:26px;
+    letter-spacing:0.02em;
+    color:var(--midnight);
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  .logo span.tag{
+    font-family:'Inter',sans-serif;
+    font-weight:400;
+    font-size:10px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--slate);
+  }
+  .nav-links{
+    display:flex;
+    gap:40px;
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+  }
+  .nav-links a{
+    font-size:14px;
+    font-weight:500;
+    color:var(--ink);
+    position:relative;
+    padding:6px 0;
+    transition:color .25s ease;
+  }
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:0%; height:1.5px;
+    background:var(--slate);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover{color:var(--teal);}
+  .nav-links a:hover::after{width:100%;}  .nav-utils{
+    display:flex;
+    align-items:center;
+    gap:22px;
+  }
+  .icon-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:36px; height:36px;
+    color:var(--ink);
+    position:relative;
+    transition:color .2s ease, transform .2s ease;
+  }
+  .icon-btn:hover{color:var(--teal); transform:translateY(-1px);}
+  .icon-btn svg{width:20px; height:20px;}
+  .cart-badge{
+    position:absolute;
+    top:1px; right:1px;
+    background:var(--midnight);
+    color:#fff;
+    font-size:10px;
+    font-weight:600;
+    width:16px; height:16px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    line-height:1;
+  }
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    width:36px; height:36px;
+    align-items:center;
+    justify-content:center;
+  }
+  .hamburger span{
+    display:block;
+    width:22px; height:2px;
+    background:var(--ink);
+    transition:transform .3s ease, opacity .3s ease;
+  }
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}  .mobile-menu{
+    position:fixed;
+    top:76px; left:0; right:0;
+    background:#fff;
+    border-bottom:1px solid var(--hairline);
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+    z-index:999;
+  }
+  .mobile-menu.open{max-height:480px;}
+  .mobile-menu ul{padding:8px 32px 24px;}
+  .mobile-menu li{border-bottom:1px solid var(--hairline);}
+  .mobile-menu a{
+    display:block;
+    padding:16px 0;
+    font-size:16px;
+    font-weight:500;
+  }  @media (max-width: 900px){
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+  }  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-end;
+    background:
+      linear-gradient(180deg, rgba(1,20,37,0.35) 0%, rgba(1,20,37,0.55) 55%, rgba(1,20,37,0.92) 100%),
+      url('images/1490114538077-0a7f8cb49891-1800.jpg') center/cover no-repeat;
+    color:#fff;
+    padding-top:76px;
+  }
+  .hero-inner{
+    width:100%;
+    padding-bottom:96px;
+    display:grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap:48px;
+    align-items:end;
+  }
+  .hero-eyebrow{
+    font-size:12px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-bottom:20px;
+    font-weight:600;
+  }
+  .hero h1{
+    font-size:clamp(40px, 6vw, 78px);
+    font-weight:600;
+    line-height:1.03;
+    max-width:16ch;
+  }
+  .hero-sub{
+    font-size:16px;
+    font-weight:300;
+    color:rgba(255,255,255,0.82);
+    max-width:38ch;
+    margin-top:24px;
+    line-height:1.65;
+  }
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:36px;
+    padding:16px 30px;
+    background:var(--slate);
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.03em;
+    border-radius:2px;
+    transition:background .3s ease, transform .25s ease, box-shadow .3s ease;
+  }
+  .cta:hover{background:#6c8f9d; transform:translateY(-2px); box-shadow:0 12px 24px rgba(0,0,0,0.25);}
+  .cta svg{width:16px;height:16px; transition:transform .25s ease;}
+  .cta:hover svg{transform:translateX(4px);}  .hero-meta{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    padding-bottom:8px;
+    border-left:1px solid var(--hairline-light);
+    padding-left:28px;
+  }
+  .hero-meta-item{font-size:13px; color:rgba(255,255,255,0.7); font-weight:300;}
+  .hero-meta-item b{display:block; color:#fff; font-weight:500; font-size:15px; margin-bottom:2px;}  @media (max-width: 900px){
+    .hero-inner{grid-template-columns:1fr; padding-bottom:64px;}
+    .hero-meta{border-left:none; padding-left:0; border-top:1px solid var(--hairline-light); padding-top:20px;}
+  }  /* ===== SECTION LABELS ===== */
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:48px;
+    gap:24px;
+  }
+  .section-eyebrow{
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--slate);
+    font-weight:600;
+    margin-bottom:12px;
+  }
+  .section-head h2{
+    font-size:clamp(28px,3.4vw,42px);
+    font-weight:600;
+    color:var(--midnight);
+  }
+  .section-head p{
+    font-size:14px;
+    color:#6b6b6b;
+    max-width:34ch;
+    font-weight:300;
+  }  /* ===== CATEGORY GRID ===== */
+  .categories{padding:110px 0 100px; background:#fff;}
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:20px;
+  }
+  .cat-card{
+    position:relative;
+    aspect-ratio:3/4;
+    overflow:hidden;
+    border-radius:2px;
+    cursor:pointer;
+    background:#eee;
+  }
+  .cat-card img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .7s cubic-bezier(.2,.8,.2,1), filter .5s ease;
+  }
+  .cat-card:hover img{transform:scale(1.08); filter:brightness(0.85);}
+  .cat-card::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(1,20,37,0) 40%, rgba(1,20,37,0.75) 100%);
+  }
+  .cat-label{
+    position:absolute;
+    left:20px; bottom:20px;
+    z-index:2;
+    color:#fff;
+  }
+  .cat-label .num{
+    font-size:11px;
+    letter-spacing:0.14em;
+    color:var(--slate);
+    font-weight:600;
+    display:block;
+    margin-bottom:6px;
+  }
+  .cat-label h3{
+    font-size:20px;
+    font-weight:600;
+  }
+  .cat-label span.count{
+    display:block;
+    font-size:12px;
+    font-weight:300;
+    color:rgba(255,255,255,0.75);
+    margin-top:4px;
+  }  @media (max-width: 1100px){
+    .cat-grid{grid-template-columns:repeat(2, 1fr);}
+  }
+  @media (max-width: 560px){
+    .cat-grid{grid-template-columns:1fr;}
+    .categories{padding:80px 0 64px;}
+  }  /* ===== MANIFESTO ===== */
+  .manifesto{
+    background:#fff;
+    padding:120px 0;
+    border-top:1px solid var(--hairline);
+    border-bottom:1px solid var(--hairline);
+  }
+  .manifesto-inner{
+    max-width:920px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .manifesto-eyebrow{
+    font-size:12px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--slate);
+    font-weight:600;
+    margin-bottom:28px;
+  }
+  .manifesto h2{
+    font-size:clamp(28px, 4vw, 46px);
+    font-weight:600;
+    color:var(--midnight);
+    line-height:1.25;
+    margin-bottom:32px;
+  }
+  .manifesto p{
+    font-size:16px;
+    font-weight:300;
+    color:#4a4a4a;
+    max-width:62ch;
+    margin:0 auto 20px;
+    line-height:1.8;
+  }
+  .manifesto-pillars{
+    margin-top:64px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+    text-align:left;
+  }
+  .pillar{
+    border-top:2px solid var(--midnight);
+    padding-top:20px;
+  }
+  .pillar h4{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:16px;
+    font-weight:600;
+    color:var(--midnight);
+    margin-bottom:10px;
+  }
+  .pillar p{
+    font-size:13.5px;
+    color:#666;
+    margin:0;
+    max-width:none;
+  }
+  @media (max-width:800px){
+    .manifesto-pillars{grid-template-columns:1fr; gap:28px;}
+    .manifesto{padding:88px 0;}
+  }  /* ===== FOOTER ===== */
+  footer{
+    background:var(--midnight);
+    color:rgba(255,255,255,0.85);
+    padding:90px 0 0;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1.3fr;
+    gap:48px;
+    padding-bottom:64px;
+    border-bottom:1px solid var(--hairline-light);
+  }
+  .footer-brand .logo-f{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:28px;
+    font-weight:700;
+    color:#fff;
+    margin-bottom:16px;
+  }
+  .footer-brand p{
+    font-size:13.5px;
+    font-weight:300;
+    color:rgba(255,255,255,0.55);
+    max-width:32ch;
+    line-height:1.7;
+  }
+  .footer-col h5{
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--slate);
+    font-weight:600;
+    margin-bottom:22px;
+  }
+  .footer-col ul li{margin-bottom:13px;}
+  .footer-col a{
+    font-size:14px;
+    font-weight:300;
+    color:rgba(255,255,255,0.72);
+    transition:color .2s ease;
+  }
+  .footer-col a:hover{color:#fff;}  .newsletter-form{
+    display:flex;
+    border-bottom:1px solid rgba(255,255,255,0.35);
+    padding-bottom:10px;
+    margin-top:6px;
+  }
+  .newsletter-form input{
+    flex:1;
+    background:transparent;
+    border:none;
+    color:#fff;
+    font-size:14px;
+    font-family:inherit;
+    padding:6px 0;
+  }
+  .newsletter-form input::placeholder{color:rgba(255,255,255,0.45);}
+  .newsletter-form button{
+    color:var(--slate);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    white-space:nowrap;
+    transition:color .2s ease;
+  }
+  .newsletter-form button:hover{color:#fff;}
+  .newsletter-note{font-size:12px; color:rgba(255,255,255,0.4); margin-top:12px;}  .social-row{display:flex; gap:14px; margin-top:24px;}
+  .social-row a{
+    width:36px; height:36px;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:50%;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .social-row a:hover{border-color:var(--slate); background:rgba(92,124,137,0.15);}
+  .social-row svg{width:16px; height:16px;}  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:28px 0;
+    font-size:12.5px;
+    color:rgba(255,255,255,0.45);
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .footer-bottom .legal-links{display:flex; gap:24px;}
+  .footer-bottom .legal-links a:hover{color:#fff;}  @media (max-width:900px){
+    .footer-grid{grid-template-columns:1fr 1fr; gap:40px 24px;}
+  }
+  @media (max-width:560px){
+    .footer-grid{grid-template-columns:1fr;}
+    footer{padding-top:64px;}
+  }  /* ===== TOAST ===== */
+  .toast{
+    position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--midnight); color:#fff; padding:14px 22px; border-radius:4px;
+    font-size:13.5px; font-weight:500; display:flex; align-items:center; gap:10px;
+    opacity:0; pointer-events:none; transition:opacity .3s ease, transform .3s ease;
+    z-index:2000; box-shadow:0 12px 32px rgba(0,0,0,0.25);
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto;}
+  .toast svg{width:16px; height:16px; color:var(--slate); flex-shrink:0;}  .account-icon-initials{
+    display:none;
+    align-items:center; justify-content:center;
+    width:26px; height:26px;
+    border-radius:50%;
+    background:var(--midnight);
+    color:#fff;
+    font-size:10.5px;
+    font-weight:700;
+    font-family:'Space Grotesk',sans-serif;
+  }
+</style>
+<link rel="stylesheet" href="klo.css">
+<script src="klo.js"></script>
+<link rel="canonical" href="https://example.com/klo-homepage.html">
+</head>
+<body><!-- ================= NAVBAR ================= -->
+<script>klo_writeHeader('')</script><!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <div class="hero-eyebrow">Fall / Winter — Archive 04</div>
+      <h1>Timeless garments for a living history.</h1>
+      <p class="hero-sub">Built to outlast the season, worn into the next decade. Every KLO piece is made once, mended often, and never thrown away.</p>
+      <a href="#collections" class="cta">
+        Explore Collection
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><b>Est. materials</b>Organic cotton, dead-stock denim, reclaimed wool.</div>
+      <div class="hero-meta-item"><b>Repair promise</b>Free mending for the life of the garment.</div>
+    </div>
+  </div>
+</section><div class="stitch" aria-hidden="true">
+  <svg viewBox="0 0 400 18" preserveAspectRatio="none"><line x1="0" y1="9" x2="400" y2="9" stroke="#5c7c89" stroke-width="1.5" stroke-dasharray="10 8" stroke-linecap="round"/></svg>
+</div><!-- ================= CATEGORIES ================= -->
+<section class="categories container" id="collections">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow">Shop by category</div>
+      <h2>Made to be worn again.</h2>
+    </div>
+    <p>Four core categories, rebuilt each season from what lasts — not what's trending.</p>
+  </div>  <div class="cat-grid">
+    <div class="cat-card" id="shop">
+      <img loading="lazy" decoding="async" src="images/1544022613-e87ca75a784a-900.jpg" alt="Outerwear jacket on model">
+      <div class="cat-label">
+        <span class="num">01</span>
+        <h3>Outerwear</h3>
+        <span class="count">18 pieces</span>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img loading="lazy" decoding="async" src="images/1622445275576-721325763afe-900.jpg" alt="Essentials t-shirt folded">
+      <div class="cat-label">
+        <span class="num">02</span>
+        <h3>Essentials</h3>
+        <span class="count">24 pieces</span>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img loading="lazy" decoding="async" src="images/1541099649105-f69ad21f3246-900.jpg" alt="Denim jeans detail">
+      <div class="cat-label">
+        <span class="num">03</span>
+        <h3>Denim</h3>
+        <span class="count">12 pieces</span>
+      </div>
+    </div>
+    <div class="cat-card">
+      <img loading="lazy" decoding="async" src="images/1551232864-3f0890e580d9-900.jpg" alt="Vintage archive knitwear">
+      <div class="cat-label">
+        <span class="num">04</span>
+        <h3>Vintage Archive</h3>
+        <span class="count">9 pieces</span>
+      </div>
+    </div>
+  </div>
+</section><div class="stitch" aria-hidden="true">
+  <svg viewBox="0 0 400 18" preserveAspectRatio="none"><line x1="0" y1="9" x2="400" y2="9" stroke="#5c7c89" stroke-width="1.5" stroke-dasharray="10 8" stroke-linecap="round"/></svg>
+</div><!-- ================= MANIFESTO ================= -->
+<section class="manifesto" id="story">
+  <div class="container manifesto-inner">
+    <div class="manifesto-eyebrow">Our philosophy</div>
+    <h2>Keep. Live. Old.<br>Three words, one refusal to waste.</h2>
+    <p>Fashion moves fast. We didn't want to. KLO was founded on a simple bet: that a garment built well enough, and cared for long enough, becomes worth more with age — not less.</p>
+    <p>We cut fewer styles, in smaller runs, from fabric chosen to soften and hold rather than fade and fail. What we sell this year, we'll still be repairing in ten.</p>    <div class="manifesto-pillars" id="sustainability">
+      <div class="pillar">
+        <h4>Made to last</h4>
+        <p>Overbuilt seams, natural fibers, and cuts tested for decades of wear — not one season.</p>
+      </div>
+      <div class="pillar">
+        <h4>Made to mend</h4>
+        <p>Every garment ships with a repair kit and free mending for as long as you own it.</p>
+      </div>
+      <div class="pillar">
+        <h4>Made in small runs</h4>
+        <p>We produce to order in limited batches, cutting overproduction and waste at the source.</p>
+      </div>
+    </div>
+  </div>
+</section><!-- ================= FOOTER ================= -->
+<script>klo_writeFooter()</script><script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });  document.querySelectorAll('.mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 12) {
+      navbar.style.boxShadow = '0 8px 24px rgba(1,20,37,0.06)';
+    } else {
+      navbar.style.boxShadow = 'none';
+    }
+  });
+</script><div class="toast" id="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <span id="toast-msg">Message</span>
+</div>  
+</body>
+</html>

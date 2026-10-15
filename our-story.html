@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story — KLO</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231f4959'/%3E%3Ctext x='50' y='69' font-size='56' font-family='Georgia,serif' fill='white' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Learn the story behind KLO and our commitment to durable, timeless clothing.">
+  <meta property="og:title" content="Our Story — KLO">
+  <meta property="og:description" content="Learn the story behind KLO and our commitment to durable, timeless clothing.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="KLO">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+    --bg:#ffffff;
+    --ink:#242424;
+    --slate:#5c7c89;
+    --teal:#1f4959;
+    --midnight:#011425;
+    --hairline: rgba(36,36,36,0.12);
+    --hairline-light: rgba(255,255,255,0.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif; letter-spacing:-0.01em;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit; border:none; cursor:pointer; background:none; color:inherit;}
+  img{display:block; max-width:100%;}
+  .container{max-width:1320px; margin:0 auto; padding:0 32px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+    html{scroll-behavior:auto;}
+  }
+  :focus-visible{outline:2px solid var(--slate); outline-offset:3px;}
+  .stitch{width:100%; height:18px; display:flex; align-items:center; justify-content:center; overflow:hidden;}
+  .stitch svg{width:100%; height:18px; display:block;}  /* ===== NAVBAR (shared) ===== */
+  .navbar{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    background:rgba(255,255,255,0.88);
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--hairline);
+    transition:box-shadow .3s ease;
+  }
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; height:76px;}
+  .logo{
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:26px;
+    letter-spacing:0.02em; color:var(--midnight);
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .logo span.tag{
+    font-family:'Inter',sans-serif; font-weight:400; font-size:10px;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--slate);
+  }
+  .nav-links{display:flex; gap:40px; position:absolute; left:50%; transform:translateX(-50%);}
+  .nav-links a{
+    font-size:14px; font-weight:500; color:var(--ink); position:relative; padding:6px 0;
+    transition:color .25s ease;
+  }
+  .nav-links a.active{color:var(--teal);}
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0%; height:1.5px;
+    background:var(--slate); transition:width .25s ease;
+  }
+  .nav-links a.active::after{width:100%;}
+  .nav-links a:hover{color:var(--teal);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-utils{display:flex; align-items:center; gap:22px;}
+  .icon-btn{
+    display:flex; align-items:center; justify-content:center; width:36px; height:36px;
+    color:var(--ink); position:relative; transition:color .2s ease, transform .2s ease;
+  }
+  .icon-btn:hover{color:var(--teal); transform:translateY(-1px);}
+  .icon-btn svg{width:20px; height:20px;}
+  .cart-badge{
+    position:absolute; top:1px; right:1px; background:var(--midnight); color:#fff;
+    font-size:10px; font-weight:600; width:16px; height:16px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; line-height:1;
+  }
+  .hamburger{display:none; flex-direction:column; gap:5px; width:36px; height:36px; align-items:center; justify-content:center;}
+  .hamburger span{display:block; width:22px; height:2px; background:var(--ink); transition:transform .3s ease, opacity .3s ease;}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .mobile-menu{
+    position:fixed; top:76px; left:0; right:0; background:#fff;
+    border-bottom:1px solid var(--hairline); max-height:0; overflow:hidden;
+    transition:max-height .35s ease; z-index:999;
+  }
+  .mobile-menu.open{max-height:480px;}
+  .mobile-menu ul{padding:8px 32px 24px;}
+  .mobile-menu li{border-bottom:1px solid var(--hairline);}
+  .mobile-menu a{display:block; padding:16px 0; font-size:16px; font-weight:500;}
+  .mobile-menu a.active{color:var(--teal);}
+  @media (max-width: 900px){
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+  }  /* ===== STORY HERO ===== */
+  .page-hero{
+    position:relative;
+    height:70vh;
+    min-height:480px;
+    display:flex;
+    align-items:flex-end;
+    background:
+      linear-gradient(180deg, rgba(1,20,37,0.2) 0%, rgba(1,20,37,0.5) 55%, rgba(1,20,37,0.95) 100%),
+      url('images/1489987707025-afc232f7ea0f-1800.jpg') center 35%/cover no-repeat;
+    color:#fff;
+    padding-top:76px;
+  }
+  .page-hero-inner{width:100%; padding-bottom:64px;}
+  .breadcrumb{
+    font-size:12px; letter-spacing:0.1em; text-transform:uppercase;
+    color:rgba(255,255,255,0.65); margin-bottom:18px; font-weight:500;
+  }
+  .breadcrumb a{color:rgba(255,255,255,0.65); transition:color .2s ease;}
+  .breadcrumb a:hover{color:#fff;}
+  .page-hero h1{
+    font-size:clamp(38px, 6vw, 72px);
+    font-weight:600;
+    line-height:1.02;
+    max-width:16ch;
+  }
+  .page-hero p{
+    font-size:16px; font-weight:300; color:rgba(255,255,255,0.82);
+    max-width:46ch; margin-top:20px; line-height:1.7;
+  }  /* ===== INTRO / ORIGIN ===== */
+  .origin{
+    padding:120px 0;
+  }
+  .origin-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:80px;
+    align-items:center;
+  }
+  .origin-media{
+    aspect-ratio:4/5;
+    overflow:hidden;
+    border-radius:2px;
+  }
+  .origin-media img{width:100%; height:100%; object-fit:cover;}
+  .section-eyebrow{
+    font-size:12px; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--slate); font-weight:600; margin-bottom:18px;
+  }
+  .origin-text h2{
+    font-size:clamp(26px, 3.2vw, 38px);
+    font-weight:600;
+    color:var(--midnight);
+    line-height:1.25;
+    margin-bottom:24px;
+  }
+  .origin-text p{
+    font-size:15.5px;
+    font-weight:300;
+    color:#4a4a4a;
+    line-height:1.85;
+    margin-bottom:18px;
+    max-width:52ch;
+  }
+  .origin-text p:last-child{margin-bottom:0;}
+  .signature{
+    margin-top:32px;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:15px;
+    font-weight:600;
+    color:var(--midnight);
+  }
+  .signature span{
+    display:block;
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    font-weight:300;
+    color:#8a8a8a;
+    margin-top:4px;
+  }
+  @media (max-width: 900px){
+    .origin-grid{grid-template-columns:1fr; gap:40px;}
+    .origin{padding:80px 0;}
+  }  /* ===== TIMELINE ===== */
+  .timeline{
+    background:#fff;
+    padding:110px 0;
+    border-top:1px solid var(--hairline);
+    border-bottom:1px solid var(--hairline);
+  }
+  .timeline-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 80px;
+  }
+  .timeline-head h2{
+    font-size:clamp(28px, 3.6vw, 42px);
+    font-weight:600;
+    color:var(--midnight);
+    margin-top:12px;
+  }
+  .timeline-list{
+    max-width:840px;
+    margin:0 auto;
+    position:relative;
+  }
+  .timeline-list::before{
+    content:'';
+    position:absolute;
+    left:110px;
+    top:6px;
+    bottom:6px;
+    width:1px;
+    background:var(--hairline);
+  }
+  @media (max-width: 640px){
+    .timeline-list::before{left:64px;}
+  }
+  .tl-item{
+    display:grid;
+    grid-template-columns:110px 1fr;
+    gap:32px;
+    padding-bottom:56px;
+    position:relative;
+  }
+  .tl-item:last-child{padding-bottom:0;}
+  @media (max-width: 640px){
+    .tl-item{grid-template-columns:64px 1fr; gap:20px;}
+  }
+  .tl-year{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:18px;
+    font-weight:700;
+    color:var(--midnight);
+    padding-top:2px;
+  }
+  .tl-dot{
+    position:absolute;
+    left:106px;
+    top:8px;
+    width:9px; height:9px;
+    border-radius:50%;
+    background:var(--slate);
+    border:3px solid #fff;
+    box-shadow:0 0 0 1px var(--hairline);
+  }
+  @media (max-width: 640px){
+    .tl-dot{left:60px;}
+  }
+  .tl-body h3{
+    font-size:17px;
+    font-weight:600;
+    color:var(--midnight);
+    margin-bottom:8px;
+  }
+  .tl-body p{
+    font-size:14.5px;
+    font-weight:300;
+    color:#5a5a5a;
+    line-height:1.75;
+    max-width:52ch;
+  }  /* ===== VALUES ===== */
+  .values{
+    padding:110px 0;
+    background:#fff;
+  }
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:56px;
+    gap:24px;
+  }
+  .section-head h2{
+    font-size:clamp(28px,3.4vw,42px);
+    font-weight:600;
+    color:var(--midnight);
+  }
+  .section-head p{
+    font-size:14px;
+    color:#6b6b6b;
+    max-width:36ch;
+    font-weight:300;
+  }
+  .values-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1px;
+    background:var(--hairline);
+    border:1px solid var(--hairline);
+  }
+  .value-card{
+    background:#fff;
+    padding:36px 28px;
+  }
+  .value-card .idx{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:13px;
+    font-weight:700;
+    color:var(--slate);
+    margin-bottom:20px;
+  }
+  .value-card h3{
+    font-size:17px;
+    font-weight:600;
+    color:var(--midnight);
+    margin-bottom:12px;
+  }
+  .value-card p{
+    font-size:13.5px;
+    font-weight:300;
+    color:#6a6a6a;
+    line-height:1.7;
+  }
+  @media (max-width: 900px){
+    .values-grid{grid-template-columns:repeat(2, 1fr);}
+  }
+  @media (max-width: 560px){
+    .values-grid{grid-template-columns:1fr;}
+    .values{padding:80px 0;}
+  }  /* ===== NUMBERS STRIP ===== */
+  .numbers{
+    background:var(--midnight);
+    padding:80px 0;
+  }
+  .numbers-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:32px;
+    text-align:center;
+  }
+  .number-item .num{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(32px, 4vw, 48px);
+    font-weight:700;
+    color:#fff;
+    line-height:1;
+  }
+  .number-item .label{
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--slate);
+    font-weight:600;
+    margin-top:12px;
+  }
+  @media (max-width: 700px){
+    .numbers-grid{grid-template-columns:repeat(2, 1fr); gap:40px 24px;}
+  }  /* ===== CTA BAND ===== */
+  .story-cta{
+    padding:120px 0;
+    text-align:center;
+    background:#fff;
+  }
+  .story-cta h2{
+    font-size:clamp(28px, 4vw, 44px);
+    font-weight:600;
+    color:var(--midnight);
+    max-width:20ch;
+    margin:0 auto 32px;
+    line-height:1.25;
+  }
+  .cta-row{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 30px;
+    background:var(--midnight);
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.03em;
+    border-radius:2px;
+    transition:background .3s ease, transform .25s ease;
+  }
+  .btn-primary:hover{background:var(--teal); transform:translateY(-2px);}
+  .btn-secondary{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 30px;
+    border:1px solid var(--midnight);
+    color:var(--midnight);
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.03em;
+    border-radius:2px;
+    transition:background .3s ease, color .3s ease, transform .25s ease;
+  }
+  .btn-secondary:hover{background:var(--midnight); color:#fff; transform:translateY(-2px);}  /* ===== FOOTER (shared) ===== */
+  footer{background:var(--midnight); color:rgba(255,255,255,0.85); padding:90px 0 0;}
+  .footer-grid{
+    display:grid; grid-template-columns:1.4fr 1fr 1fr 1.3fr; gap:48px;
+    padding-bottom:64px; border-bottom:1px solid var(--hairline-light);
+  }
+  .footer-brand .logo-f{font-family:'Space Grotesk',sans-serif; font-size:28px; font-weight:700; color:#fff; margin-bottom:16px;}
+  .footer-brand p{font-size:13.5px; font-weight:300; color:rgba(255,255,255,0.55); max-width:32ch; line-height:1.7;}
+  .footer-col h5{font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--slate); font-weight:600; margin-bottom:22px;}
+  .footer-col ul li{margin-bottom:13px;}
+  .footer-col a{font-size:14px; font-weight:300; color:rgba(255,255,255,0.72); transition:color .2s ease;}
+  .footer-col a:hover{color:#fff;}
+  .newsletter-form{display:flex; border-bottom:1px solid rgba(255,255,255,0.35); padding-bottom:10px; margin-top:6px;}
+  .newsletter-form input{flex:1; background:transparent; border:none; color:#fff; font-size:14px; font-family:inherit; padding:6px 0;}
+  .newsletter-form input::placeholder{color:rgba(255,255,255,0.45);}
+  .newsletter-form button{color:var(--slate); font-size:13px; font-weight:600; letter-spacing:0.04em; white-space:nowrap; transition:color .2s ease;}
+  .newsletter-form button:hover{color:#fff;}
+  .newsletter-note{font-size:12px; color:rgba(255,255,255,0.4); margin-top:12px;}
+  .social-row{display:flex; gap:14px; margin-top:24px;}
+  .social-row a{
+    width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+    border:1px solid rgba(255,255,255,0.25); border-radius:50%;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .social-row a:hover{border-color:var(--slate); background:rgba(92,124,137,0.15);}
+  .social-row svg{width:16px; height:16px;}
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center; padding:28px 0;
+    font-size:12.5px; color:rgba(255,255,255,0.45); flex-wrap:wrap; gap:12px;
+  }
+  .footer-bottom .legal-links{display:flex; gap:24px;}
+  .footer-bottom .legal-links a:hover{color:#fff;}
+  @media (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr; gap:40px 24px;}}
+  @media (max-width:560px){.footer-grid{grid-template-columns:1fr;} footer{padding-top:64px;}}  /* ===== TOAST ===== */
+  .toast{
+    position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--midnight); color:#fff; padding:14px 22px; border-radius:4px;
+    font-size:13.5px; font-weight:500; display:flex; align-items:center; gap:10px;
+    opacity:0; pointer-events:none; transition:opacity .3s ease, transform .3s ease;
+    z-index:2000; box-shadow:0 12px 32px rgba(0,0,0,0.25);
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto;}
+  .toast svg{width:16px; height:16px; color:var(--slate); flex-shrink:0;}  .account-icon-initials{
+    display:none;
+    align-items:center; justify-content:center;
+    width:26px; height:26px;
+    border-radius:50%;
+    background:var(--midnight);
+    color:#fff;
+    font-size:10.5px;
+    font-weight:700;
+    font-family:'Space Grotesk',sans-serif;
+  }
+</style>
+<link rel="stylesheet" href="klo.css">
+<script src="klo.js"></script>
+<link rel="canonical" href="https://example.com/our-story.html">
+</head>
+<body><!-- ================= NAVBAR ================= -->
+<script>klo_writeHeader('story')</script><!-- ================= STORY HERO ================= -->
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <div class="breadcrumb"><a href="klo-homepage.html">Home</a> / Our Story</div>
+    <h1>We build clothes the way our grandparents did.</h1>
+    <p>Slowly, deliberately, and with the expectation that they'd be worn for years — then handed down, not thrown out.</p>
+  </div>
+</section><!-- ================= ORIGIN ================= -->
+<section class="container origin">
+  <div class="origin-grid">
+    <div class="origin-media">
+      <img loading="lazy" decoding="async" src="images/1445205170230-053b83016050-900.jpg" alt="Founder working in a garment workshop">
+    </div>
+    <div class="origin-text">
+      <div class="section-eyebrow">How it started</div>
+      <h2>KLO began with a jacket that wouldn't fall apart.</h2>
+      <p>It wasn't a business plan. It was a beat-up field jacket, inherited, patched twice, and still in daily rotation after fifteen years — while everything bought new that same decade had long since worn out, gone out of style, or ended up in a landfill.</p>
+      <p>That contrast became the whole premise of KLO: build fewer garments, build them properly, and stand behind them for as long as someone chooses to wear them. Keep. Live. Old. Not a slogan — an instruction.</p>
+      <p>We started with three styles cut from deadstock fabric in a single workshop. We've grown since, but the instruction hasn't changed.</p>
+      <div class="signature">
+        The KLO Founding Team
+        <span>Est. 2019 — still small on purpose</span>
+      </div>
+    </div>
+  </div>
+</section><div class="stitch" aria-hidden="true">
+  <svg viewBox="0 0 400 18" preserveAspectRatio="none"><line x1="0" y1="9" x2="400" y2="9" stroke="#5c7c89" stroke-width="1.5" stroke-dasharray="10 8" stroke-linecap="round"/></svg>
+</div><!-- ================= TIMELINE ================= -->
+<section class="timeline">
+  <div class="container">
+    <div class="timeline-head">
+      <div class="section-eyebrow" style="text-align:center;">Where we've been</div>
+      <h2>Small runs, deliberate growth.</h2>
+    </div>    <div class="timeline-list">
+      <div class="tl-item">
+        <div class="tl-year">2019</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h3>Three styles, one workshop</h3>
+          <p>KLO launched with a field jacket, a raw denim, and a heavyweight tee — all cut from deadstock fabric to avoid producing anything new from scratch.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2021</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h3>The repair promise</h3>
+          <p>We committed to free mending on every KLO garment for as long as it's owned — turning "returns" into "repairs" as the default relationship with a worn item.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2023</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h3>Men's and Women's lines</h3>
+          <p>We expanded from a single unisex capsule into dedicated Men's and Women's collections, without changing how each piece was built.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2026</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h3>Archive 04</h3>
+          <p>Our latest collection — still made in small, produced-to-order batches, still repaired for free, still built to be worn a decade from now.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- ================= VALUES ================= -->
+<section class="container values">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow">What we stand for</div>
+      <h2>The instruction behind every garment.</h2>
+    </div>
+    <p>Four commitments that shape every decision, from fabric sourcing to how we handle a return.</p>
+  </div>  <div class="values-grid">
+    <div class="value-card">
+      <div class="idx">01</div>
+      <h3>Built to last</h3>
+      <p>Overbuilt seams, natural fibers, and cuts stress-tested for years of wear — not one season of trend cycles.</p>
+    </div>
+    <div class="value-card">
+      <div class="idx">02</div>
+      <h3>Built to mend</h3>
+      <p>Every piece ships with a repair kit, and we mend it for free for as long as you own it. No fine print.</p>
+    </div>
+    <div class="value-card">
+      <div class="idx">03</div>
+      <h3>Made in small runs</h3>
+      <p>We produce to order in limited batches. No warehouses of unsold stock, no overproduction to write off.</p>
+    </div>
+    <div class="value-card">
+      <div class="idx">04</div>
+      <h3>Honest about cost</h3>
+      <p>Our prices reflect what it actually costs to make something well — and pay the people who make it fairly.</p>
+    </div>
+  </div>
+</section><!-- ================= NUMBERS ================= -->
+<section class="numbers">
+  <div class="container numbers-grid">
+    <div class="number-item">
+      <div class="num">6 yrs</div>
+      <div class="label">In business</div>
+    </div>
+    <div class="number-item">
+      <div class="num">40+</div>
+      <div class="label">Styles ever made</div>
+    </div>
+    <div class="number-item">
+      <div class="num">100%</div>
+      <div class="label">Repairs done free</div>
+    </div>
+    <div class="number-item">
+      <div class="num">1</div>
+      <div class="label">Workshop, still small</div>
+    </div>
+  </div>
+</section><!-- ================= CTA ================= -->
+<section class="container story-cta">
+  <h2>Wear something built to outlast the trend that made it.</h2>
+  <div class="cta-row">
+    <a href="men.html" class="btn-primary">
+      Shop Men
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <a href="women.html" class="btn-secondary">
+      Shop Women
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section><!-- ================= FOOTER ================= -->
+<script>klo_writeFooter()</script><script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script><div class="toast" id="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <span id="toast-msg">Message</span>
+</div>  
+</body>
+</html>

@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waxed Field Jacket — KLO</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231f4959'/%3E%3Ctext x='50' y='69' font-size='56' font-family='Georgia,serif' fill='white' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Waxed Field Jacket from KLO — durable, weatherproof outerwear built to last a lifetime.">
+  <meta property="og:title" content="Waxed Field Jacket — KLO">
+  <meta property="og:description" content="Waxed Field Jacket from KLO — durable, weatherproof outerwear built to last a lifetime.">
+  <meta property="og:type" content="product">
+  <meta property="og:site_name" content="KLO">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+    --bg:#ffffff;
+    --ink:#242424;
+    --slate:#5c7c89;
+    --teal:#1f4959;
+    --midnight:#011425;
+    --hairline: rgba(36,36,36,0.12);
+    --hairline-light: rgba(255,255,255,0.16);
+    --error:#b23b3b;
+    --success:#3b7a5c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif; letter-spacing:-0.01em;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit; border:none; cursor:pointer; background:none; color:inherit;}
+  img{display:block; max-width:100%;}
+  .container{max-width:1320px; margin:0 auto; padding:0 32px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+    html{scroll-behavior:auto;}
+  }
+  :focus-visible{outline:2px solid var(--slate); outline-offset:3px;}
+  .stitch{width:100%; height:18px; display:flex; align-items:center; justify-content:center; overflow:hidden;}
+  .stitch svg{width:100%; height:18px; display:block;}  /* ===== NAVBAR (shared) ===== */
+  .navbar{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    background:rgba(255,255,255,0.88);
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--hairline);
+    transition:box-shadow .3s ease;
+  }
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; height:76px;}
+  .logo{
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:26px;
+    letter-spacing:0.02em; color:var(--midnight);
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .logo span.tag{
+    font-family:'Inter',sans-serif; font-weight:400; font-size:10px;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--slate);
+  }
+  .nav-links{display:flex; gap:40px; position:absolute; left:50%; transform:translateX(-50%);}
+  .nav-links a{
+    font-size:14px; font-weight:500; color:var(--ink); position:relative; padding:6px 0;
+    transition:color .25s ease;
+  }
+  .nav-links a.active{color:var(--teal);}
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0%; height:1.5px;
+    background:var(--slate); transition:width .25s ease;
+  }
+  .nav-links a.active::after{width:100%;}
+  .nav-links a:hover{color:var(--teal);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-utils{display:flex; align-items:center; gap:22px;}
+  .icon-btn{
+    display:flex; align-items:center; justify-content:center; width:36px; height:36px;
+    color:var(--ink); position:relative; transition:color .2s ease, transform .2s ease;
+  }
+  .icon-btn:hover{color:var(--teal); transform:translateY(-1px);}
+  .icon-btn svg{width:20px; height:20px;}
+  .cart-badge{
+    position:absolute; top:1px; right:1px; background:var(--midnight); color:#fff;
+    font-size:10px; font-weight:600; width:16px; height:16px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; line-height:1;
+  }
+  .hamburger{display:none; flex-direction:column; gap:5px; width:36px; height:36px; align-items:center; justify-content:center;}
+  .hamburger span{display:block; width:22px; height:2px; background:var(--ink); transition:transform .3s ease, opacity .3s ease;}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .mobile-menu{
+    position:fixed; top:76px; left:0; right:0; background:#fff;
+    border-bottom:1px solid var(--hairline); max-height:0; overflow:hidden;
+    transition:max-height .35s ease; z-index:999;
+  }
+  .mobile-menu.open{max-height:480px;}
+  .mobile-menu ul{padding:8px 32px 24px;}
+  .mobile-menu li{border-bottom:1px solid var(--hairline);}
+  .mobile-menu a{display:block; padding:16px 0; font-size:16px; font-weight:500;}
+  .mobile-menu a.active{color:var(--teal);}
+  @media (max-width: 900px){
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+  }  /* ===== BREADCRUMB ===== */
+  .pdp-breadcrumb{
+    padding:112px 0 0;
+    font-size:12px;
+    letter-spacing:0.05em;
+    color:#999;
+  }
+  .pdp-breadcrumb a{transition:color .2s ease;}
+  .pdp-breadcrumb a:hover{color:var(--teal);}
+  .pdp-breadcrumb span{color:var(--ink); font-weight:500;}  /* ===== PDP LAYOUT ===== */
+  .pdp{
+    padding:32px 0 100px;
+  }
+  .pdp-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:start;
+  }
+  @media (max-width: 960px){
+    .pdp-grid{grid-template-columns:1fr; gap:32px;}
+  }  /* ===== GALLERY ===== */
+  .gallery{
+    display:grid;
+    grid-template-columns:88px 1fr;
+    gap:16px;
+    position:sticky;
+    top:100px;
+  }
+  @media (max-width: 960px){
+    .gallery{position:static;}
+  }
+  .thumb-col{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .thumb{
+    aspect-ratio:3/4;
+    border-radius:2px;
+    overflow:hidden;
+    border:2px solid transparent;
+    cursor:pointer;
+    opacity:0.6;
+    transition:opacity .2s ease, border-color .2s ease;
+  }
+  .thumb img{width:100%; height:100%; object-fit:cover;}
+  .thumb.active{opacity:1; border-color:var(--midnight);}
+  .thumb:hover{opacity:1;}
+  .main-image{
+    aspect-ratio:3/4;
+    border-radius:2px;
+    overflow:hidden;
+    background:#eee;
+    position:relative;
+  }
+  .main-image img{
+    width:100%; height:100%; object-fit:cover;
+    transition:opacity .3s ease;
+  }
+  .main-tag{
+    position:absolute; top:16px; left:16px;
+    background:var(--slate); color:#fff;
+    font-size:11px; font-weight:600; letter-spacing:0.05em; text-transform:uppercase;
+    padding:6px 12px; border-radius:2px;
+  }
+  @media (max-width: 640px){
+    .gallery{grid-template-columns:1fr;}
+    .thumb-col{flex-direction:row; overflow-x:auto;}
+    .thumb{min-width:64px; width:64px;}
+  }  /* ===== PRODUCT INFO ===== */
+  .pdp-info .eyebrow{
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--slate);
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .pdp-info h1{
+    font-size:clamp(28px, 3vw, 36px);
+    font-weight:600;
+    color:var(--midnight);
+    margin-bottom:12px;
+  }
+  .rating-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:20px;
+  }
+  .stars{display:flex; gap:2px; color:var(--slate);}
+  .stars svg{width:15px; height:15px;}
+  .rating-count{font-size:12.5px; color:#999;}
+  .pdp-price{
+    font-size:24px;
+    font-weight:700;
+    color:var(--midnight);
+    margin-bottom:24px;
+  }
+  .pdp-price .strike{
+    text-decoration:line-through;
+    color:#b0b0b0;
+    font-weight:400;
+    font-size:17px;
+    margin-right:10px;
+  }
+  .pdp-price .save-tag{
+    display:inline-block;
+    font-size:11.5px;
+    font-weight:600;
+    color:var(--success);
+    background:rgba(59,122,92,0.1);
+    padding:4px 10px;
+    border-radius:2px;
+    margin-left:12px;
+    vertical-align:middle;
+  }
+  .pdp-desc{
+    font-size:14.5px;
+    font-weight:300;
+    color:#555;
+    line-height:1.75;
+    margin-bottom:32px;
+    max-width:48ch;
+  }  /* ===== COLOR SELECTOR ===== */
+  .select-block{margin-bottom:28px;}
+  .select-label{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:13px;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:14px;
+  }
+  .select-label .val{font-weight:400; color:#777;}
+  .color-row{display:flex; gap:12px;}
+  .color-swatch{
+    width:36px; height:36px;
+    border-radius:50%;
+    border:2px solid transparent;
+    padding:2px;
+    cursor:pointer;
+    position:relative;
+  }
+  .color-swatch .fill{
+    width:100%; height:100%;
+    border-radius:50%;
+    display:block;
+    border:1px solid rgba(0,0,0,0.1);
+  }
+  .color-swatch.active{border-color:var(--midnight);}  /* ===== SIZE SELECTOR ===== */
+  .size-guide-link{
+    font-size:12px;
+    color:var(--slate);
+    font-weight:600;
+    cursor:pointer;
+  }
+  .size-guide-link:hover{text-decoration:underline; color:var(--teal);}
+  .size-row{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    gap:10px;
+  }
+  @media (max-width:480px){
+    .size-row{grid-template-columns:repeat(3, 1fr);}
+  }
+  .size-btn{
+    padding:12px 0;
+    text-align:center;
+    border:1px solid var(--hairline);
+    border-radius:2px;
+    font-size:13px;
+    font-weight:600;
+    color:var(--ink);
+    transition:all .2s ease;
+  }
+  .size-btn:hover{border-color:var(--slate);}
+  .size-btn.active{background:var(--midnight); border-color:var(--midnight); color:#fff;}
+  .size-btn.disabled{
+    color:#ccc;
+    text-decoration:line-through;
+    cursor:not-allowed;
+    background:#fafafa;
+  }
+  .size-btn.disabled:hover{border-color:var(--hairline);}
+  .size-error{
+    font-size:12px;
+    color:var(--error);
+    margin-top:10px;
+    display:none;
+  }
+  .size-error.show{display:block;}  /* ===== QTY + ADD TO CART ===== */
+  .action-row{
+    display:flex;
+    gap:14px;
+    margin-bottom:20px;
+  }
+  .qty-control{
+    display:flex;
+    align-items:center;
+    border:1px solid var(--hairline);
+    border-radius:2px;
+    flex-shrink:0;
+  }
+  .qty-control button{
+    width:44px; height:52px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:16px;
+    color:var(--ink);
+    transition:background .2s ease;
+  }
+  .qty-control button:hover{background:#f4f4f4;}
+  .qty-control span{
+    width:36px;
+    text-align:center;
+    font-size:14px;
+    font-weight:600;
+  }
+  .add-to-cart{
+    flex:1;
+    padding:0 24px;
+    height:52px;
+    background:var(--midnight);
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.03em;
+    border-radius:2px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    transition:background .25s ease, transform .2s ease;
+  }
+  .add-to-cart:hover{background:var(--teal);}
+  .add-to-cart:active{transform:scale(0.99);}
+  .add-to-cart svg{width:17px; height:17px;}
+  .add-to-cart.added{background:var(--success);}  .wishlist-btn{
+    width:52px; height:52px;
+    flex-shrink:0;
+    border:1px solid var(--hairline);
+    border-radius:2px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--ink);
+    transition:border-color .2s ease, color .2s ease, background .2s ease;
+  }
+  .wishlist-btn:hover{border-color:var(--slate); color:var(--teal);}
+  .wishlist-btn.active{background:var(--midnight); border-color:var(--midnight); color:#fff;}
+  .wishlist-btn svg{width:19px; height:19px;}  @media (max-width: 480px){
+    .action-row{flex-wrap:wrap;}
+    .add-to-cart{width:100%;}
+  }  /* ===== TRUST STRIP ===== */
+  .trust-strip{
+    display:flex;
+    gap:24px;
+    padding:20px 0;
+    border-top:1px solid var(--hairline);
+    border-bottom:1px solid var(--hairline);
+    margin:8px 0 32px;
+    flex-wrap:wrap;
+  }
+  .trust-strip-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:12.5px;
+    color:#666;
+    flex:1;
+    min-width:150px;
+  }
+  .trust-strip-item svg{width:20px; height:20px; color:var(--slate); flex-shrink:0;}  /* ===== ACCORDION ===== */
+  .accordion-item{
+    border-bottom:1px solid var(--hairline);
+  }
+  .accordion-head{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 0;
+    font-size:14px;
+    font-weight:600;
+    color:var(--ink);
+    cursor:pointer;
+  }
+  .accordion-head svg{
+    width:16px; height:16px;
+    transition:transform .3s ease;
+    color:var(--slate);
+    flex-shrink:0;
+  }
+  .accordion-item.open .accordion-head svg{transform:rotate(45deg);}
+  .accordion-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+  }
+  .accordion-item.open .accordion-body{max-height:280px;}
+  .accordion-body-inner{
+    padding-bottom:20px;
+    font-size:13.5px;
+    font-weight:300;
+    color:#666;
+    line-height:1.75;
+  }
+  .accordion-body-inner ul{padding-left:0;}
+  .accordion-body-inner li{
+    padding-left:16px;
+    position:relative;
+    margin-bottom:6px;
+  }
+  .accordion-body-inner li::before{
+    content:'—';
+    position:absolute;
+    left:0;
+    color:var(--slate);
+  }  /* ===== RELATED PRODUCTS ===== */
+  .related{
+    padding:100px 0 110px;
+  }  /* ===== REVIEWS ===== */
+  .reviews-section{padding:80px 0;}
+  .reviews-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:32px;
+    margin-bottom:48px;
+    flex-wrap:wrap;
+  }
+  .reviews-summary{display:flex; align-items:center; gap:24px;}
+  .reviews-score{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:48px;
+    font-weight:700;
+    color:var(--midnight);
+    line-height:1;
+  }
+  .reviews-score-meta .stars{display:flex; gap:3px; color:var(--slate); margin-bottom:6px;}
+  .reviews-score-meta .stars svg{width:16px; height:16px;}
+  .reviews-score-meta .count{font-size:13px; color:#888;}
+  .write-review-btn{
+    padding:13px 26px;
+    border:1px solid var(--midnight);
+    color:var(--midnight);
+    font-size:13.5px;
+    font-weight:600;
+    border-radius:2px;
+    transition:background .2s ease, color .2s ease;
+    white-space:nowrap;
+  }
+  .write-review-btn:hover{background:var(--midnight); color:#fff;}  .review-form-wrap{
+    display:none;
+    border:1px solid var(--hairline);
+    border-radius:4px;
+    padding:28px;
+    margin-bottom:40px;
+  }
+  .review-form-wrap.open{display:block;}
+  .review-form-wrap h3{font-size:15px; font-weight:600; color:var(--midnight); margin-bottom:20px;}
+  .star-select{display:flex; gap:6px; margin-bottom:20px;}
+  .star-select svg{width:26px; height:26px; color:var(--hairline); cursor:pointer; transition:color .15s ease;}
+  .star-select svg.selected{color:var(--slate);}
+  .review-form-wrap .co-field{margin-bottom:16px;}
+  .review-form-wrap label{display:block; font-size:12.5px; font-weight:600; color:var(--ink); margin-bottom:8px;}
+  .review-form-wrap input, .review-form-wrap textarea{
+    width:100%; padding:12px 14px; border:1px solid var(--hairline); border-radius:2px;
+    font-size:14px; font-family:inherit; color:var(--ink);
+  }
+  .review-form-wrap textarea{min-height:90px; resize:vertical;}
+  .review-form-wrap input:focus, .review-form-wrap textarea:focus{
+    outline:none; border-color:var(--slate); box-shadow:0 0 0 3px rgba(92,124,137,0.12);
+  }
+  .review-submit-btn{
+    padding:13px 26px; background:var(--midnight); color:#fff; font-size:13.5px; font-weight:600;
+    border-radius:2px; transition:background .2s ease;
+  }
+  .review-submit-btn:hover{background:var(--teal);}  .review-list{border-top:1px solid var(--hairline);}
+  .review-item{
+    padding:24px 0;
+    border-bottom:1px solid var(--hairline);
+  }
+  .review-item-head{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; gap:16px;}
+  .review-item-head .stars{display:flex; gap:2px; color:var(--slate);}
+  .review-item-head .stars svg{width:13px; height:13px;}
+  .review-author{font-size:13.5px; font-weight:600; color:var(--ink);}
+  .review-date{font-size:12px; color:#999;}
+  .review-text{font-size:14px; color:#555; font-weight:300; line-height:1.7;}
+  .review-empty{font-size:14px; color:#888; font-weight:300; padding:24px 0;}  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:48px;
+    gap:24px;
+  }
+  .section-eyebrow{
+    font-size:12px; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--slate); font-weight:600; margin-bottom:12px;
+  }
+  .section-head h2{
+    font-size:clamp(26px,3.2vw,36px);
+    font-weight:600;
+    color:var(--midnight);
+  }
+  .related-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:24px;
+  }
+  @media (max-width:1100px){.related-grid{grid-template-columns:repeat(2,1fr);}}
+  .rel-card{cursor:pointer;}
+  .rel-media{
+    aspect-ratio:3/4;
+    border-radius:2px;
+    overflow:hidden;
+    background:#eee;
+    margin-bottom:14px;
+  }
+  .rel-media img{width:100%; height:100%; object-fit:cover; transition:transform .6s ease;}
+  .rel-card:hover .rel-media img{transform:scale(1.06);}
+  .rel-card h3{font-size:14.5px; font-weight:600; color:var(--ink); margin-bottom:4px;}
+  .rel-card .price{font-size:13.5px; color:#888;}  /* ===== FOOTER (shared) ===== */
+  footer{background:var(--midnight); color:rgba(255,255,255,0.85); padding:90px 0 0;}
+  .footer-grid{
+    display:grid; grid-template-columns:1.4fr 1fr 1fr 1.3fr; gap:48px;
+    padding-bottom:64px; border-bottom:1px solid var(--hairline-light);
+  }
+  .footer-brand .logo-f{font-family:'Space Grotesk',sans-serif; font-size:28px; font-weight:700; color:#fff; margin-bottom:16px;}
+  .footer-brand p{font-size:13.5px; font-weight:300; color:rgba(255,255,255,0.55); max-width:32ch; line-height:1.7;}
+  .footer-col h5{font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--slate); font-weight:600; margin-bottom:22px;}
+  .footer-col ul li{margin-bottom:13px;}
+  .footer-col a{font-size:14px; font-weight:300; color:rgba(255,255,255,0.72); transition:color .2s ease;}
+  .footer-col a:hover{color:#fff;}
+  .newsletter-form{display:flex; border-bottom:1px solid rgba(255,255,255,0.35); padding-bottom:10px; margin-top:6px;}
+  .newsletter-form input{flex:1; background:transparent; border:none; color:#fff; font-size:14px; font-family:inherit; padding:6px 0;}
+  .newsletter-form input::placeholder{color:rgba(255,255,255,0.45);}
+  .newsletter-form button{color:var(--slate); font-size:13px; font-weight:600; letter-spacing:0.04em; white-space:nowrap; transition:color .2s ease;}
+  .newsletter-form button:hover{color:#fff;}
+  .newsletter-note{font-size:12px; color:rgba(255,255,255,0.4); margin-top:12px;}
+  .social-row{display:flex; gap:14px; margin-top:24px;}
+  .social-row a{
+    width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+    border:1px solid rgba(255,255,255,0.25); border-radius:50%;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .social-row a:hover{border-color:var(--slate); background:rgba(92,124,137,0.15);}
+  .social-row svg{width:16px; height:16px;}
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center; padding:28px 0;
+    font-size:12.5px; color:rgba(255,255,255,0.45); flex-wrap:wrap; gap:12px;
+  }
+  .footer-bottom .legal-links{display:flex; gap:24px;}
+  .footer-bottom .legal-links a:hover{color:#fff;}
+  @media (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr; gap:40px 24px;}}
+  @media (max-width:560px){.footer-grid{grid-template-columns:1fr;} footer{padding-top:64px;}}  /* ===== TOAST ===== */
+  .toast{
+    position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--midnight); color:#fff; padding:14px 22px; border-radius:4px;
+    font-size:13.5px; font-weight:500; display:flex; align-items:center; gap:10px;
+    opacity:0; pointer-events:none; transition:opacity .3s ease, transform .3s ease;
+    z-index:2000; box-shadow:0 12px 32px rgba(0,0,0,0.25);
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto;}
+  .toast svg{width:16px; height:16px; color:var(--slate); flex-shrink:0;}  /* ===== SIZE GUIDE MODAL ===== */
+  .modal-overlay{
+    position:fixed; inset:0;
+    background:rgba(1,20,37,0.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:3000;
+    padding:24px;
+  }
+  .modal-overlay.show{display:flex;}
+  .modal{
+    background:#fff;
+    border-radius:4px;
+    max-width:520px;
+    width:100%;
+    padding:36px;
+    max-height:85vh;
+    overflow-y:auto;
+  }
+  .modal-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:24px;
+  }
+  .modal-head h3{font-size:19px; font-weight:600; color:var(--midnight);}
+  .modal-close{
+    width:32px; height:32px;
+    display:flex; align-items:center; justify-content:center;
+    color:#999;
+    transition:color .2s ease;
+  }
+  .modal-close:hover{color:var(--ink);}
+  .modal-close svg{width:18px; height:18px;}
+  .size-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13px;
+  }
+  .size-table th, .size-table td{
+    padding:10px 8px;
+    text-align:center;
+    border-bottom:1px solid var(--hairline);
+  }
+  .size-table th{
+    color:var(--slate);
+    font-weight:600;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+  .size-table td:first-child, .size-table th:first-child{text-align:left; font-weight:600; color:var(--ink);}
+  .modal-note{font-size:12px; color:#888; margin-top:18px; line-height:1.6;}
+  .account-icon-initials{
+    display:none;
+    align-items:center; justify-content:center;
+    width:26px; height:26px;
+    border-radius:50%;
+    background:var(--midnight);
+    color:#fff;
+    font-size:10.5px;
+    font-weight:700;
+    font-family:'Space Grotesk',sans-serif;
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Waxed Field Jacket",
+  "image": "images/1544923246-77307dd654cb-800.jpg",
+  "description": "A waxed-cotton field jacket built for daily wear through every season. Overbuilt seams and a storm flap keep it holding up long after fast-fashion outerwear gives out.",
+  "brand": { "@type": "Brand", "name": "KLO" },
+  "category": "Outerwear",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://example.com/product.html",
+    "priceCurrency": "USD",
+    "price": "248",
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
+<link rel="stylesheet" href="klo.css">
+<script src="klo.js"></script>
+<link rel="canonical" href="https://example.com/product.html">
+</head>
+<body><!-- ================= NAVBAR ================= -->
+<script>klo_writeHeader('men')</script><!-- ================= BREADCRUMB ================= -->
+<div class="container pdp-breadcrumb">
+  <a href="klo-homepage.html">Home</a> / <a href="men.html" id="breadcrumbGender">Men</a> / <a href="men.html" id="breadcrumbCategory">Outerwear</a> / <span id="breadcrumbName">Waxed Field Jacket</span>
+</div><!-- ================= PDP ================= -->
+<section class="container pdp">
+  <div class="pdp-grid">    <!-- ===== GALLERY ===== -->
+    <div class="gallery">
+      <div class="thumb-col" id="thumbCol">
+        <div class="thumb active" data-img="images/1544923246-77307dd654cb-800.jpg">
+          <img loading="lazy" decoding="async" src="images/1544923246-77307dd654cb-300.jpg" alt="Front view">
+        </div>
+        <div class="thumb" data-img="images/1551028719-00167b16eac5-800.jpg">
+          <img loading="lazy" decoding="async" src="images/1551028719-00167b16eac5-300.jpg" alt="Back view">
+        </div>
+        <div class="thumb" data-img="images/1548126032-079a0fb0099d-800.jpg">
+          <img loading="lazy" decoding="async" src="images/1548126032-079a0fb0099d-300.jpg" alt="Styled view">
+        </div>
+        <div class="thumb" data-img="images/1591047139829-d91aecb6caea-800.jpg">
+          <img loading="lazy" decoding="async" src="images/1591047139829-d91aecb6caea-300.jpg" alt="Detail view">
+        </div>
+      </div>
+      <div class="main-image">
+        <span class="main-tag">New</span>
+        <img id="mainImage" src="images/1544923246-77307dd654cb-800.jpg" alt="Waxed Field Jacket">
+      </div>
+    </div>    <!-- ===== INFO ===== -->
+    <div class="pdp-info">
+      <div class="eyebrow" id="pageEyebrow">Outerwear — Archive 04</div>
+      <h1 id="pageTitle">Waxed Field Jacket</h1>      <div class="rating-row">
+        <div class="stars">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>
+        </div>
+        <span class="rating-count">4.2 (86 reviews)</span>
+      </div>      <div class="pdp-price" id="pdpPrice">
+        $248
+      </div>      <p class="pdp-desc" id="pageDesc">A waxed-cotton field jacket built for daily wear through every season. Overbuilt seams and a storm flap keep it holding up long after fast-fashion outerwear gives out — and it only gets better with age.</p>      <!-- COLOR -->
+      <div class="select-block">
+        <div class="select-label"><span>Color</span> <span class="val" id="colorVal">Deep Teal</span></div>
+        <div class="color-row" id="colorRow">
+          <button class="color-swatch active" data-color="Deep Teal"><span class="fill" style="background:#1f4959;"></span></button>
+          <button class="color-swatch" data-color="Midnight"><span class="fill" style="background:#011425;"></span></button>
+          <button class="color-swatch" data-color="Stone"><span class="fill" style="background:#c9c1b3;"></span></button>
+        </div>
+      </div>      <!-- SIZE -->
+      <div class="select-block">
+        <div class="select-label">
+          <span>Size</span>
+          <span class="size-guide-link" onclick="openSizeGuide()">Size guide</span>
+        </div>
+        <div class="size-row" id="sizeRow">
+          <button class="size-btn" data-size="XS">XS</button>
+          <button class="size-btn" data-size="S">S</button>
+          <button class="size-btn active" data-size="M">M</button>
+          <button class="size-btn" data-size="L">L</button>
+          <button class="size-btn" data-size="XL">XL</button>
+          <button class="size-btn disabled" data-size="XXL" disabled>XXL</button>
+        </div>
+        <div class="size-error" id="sizeError">Please select a size.</div>
+      </div>      <!-- QTY + ADD TO CART -->
+      <div class="action-row">
+        <div class="qty-control">
+          <button onclick="changeQty(-1)" aria-label="Decrease quantity">−</button>
+          <span id="qtyVal">1</span>
+          <button onclick="changeQty(1)" aria-label="Increase quantity">+</button>
+        </div>
+        <button class="add-to-cart" id="addToCartBtn" onclick="addToCart()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+          <span id="addToCartLabel">Add to Cart</span>
+        </button>
+        <button class="wishlist-btn" id="wishlistBtn" onclick="toggleWishlist()" aria-label="Add to wishlist">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        </button>
+      </div>      <!-- TRUST STRIP -->
+      <div class="trust-strip">
+        <div class="trust-strip-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Free repairs for life
+        </div>
+        <div class="trust-strip-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3h18v13H3z"/><path d="M16 16l-4 5-4-5"/></svg>
+          Free returns within 30 days
+        </div>
+        <div class="trust-strip-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Ships in 2–4 business days
+        </div>
+      </div>      <!-- ACCORDIONS -->
+      <div class="accordion-item open">
+        <button class="accordion-head" onclick="toggleAccordion(this)">
+          Materials & Care
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <ul>
+              <li>100% organic waxed cotton shell</li>
+              <li>Reclaimed wool blend lining</li>
+              <li>Re-wax every 12–18 months to maintain water resistance</li>
+              <li>Spot clean only — do not machine wash</li>
+            </ul>
+          </div>
+        </div>
+      </div>      <div class="accordion-item">
+        <button class="accordion-head" onclick="toggleAccordion(this)">
+          Shipping & Returns
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <ul>
+              <li>Free standard shipping on orders over $200</li>
+              <li>Ships in 2–4 business days</li>
+              <li>Free returns within 30 days of delivery</li>
+              <li>International shipping available at checkout</li>
+            </ul>
+          </div>
+        </div>
+      </div>      <div class="accordion-item">
+        <button class="accordion-head" onclick="toggleAccordion(this)">
+          The Repair Promise
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <p>Every KLO garment ships with a repair kit and free mending for as long as you own it. If a seam, zipper, or fastener fails, we fix it — no receipt required, no fine print.</p>
+          </div>
+        </div>
+      </div>    </div>
+  </div>
+</section><div class="stitch" aria-hidden="true">
+  <svg viewBox="0 0 400 18" preserveAspectRatio="none"><line x1="0" y1="9" x2="400" y2="9" stroke="#5c7c89" stroke-width="1.5" stroke-dasharray="10 8" stroke-linecap="round"/></svg>
+</div><!-- ================= REVIEWS ================= -->
+<section class="container reviews-section">
+  <div class="reviews-head">
+    <div class="reviews-summary">
+      <div class="reviews-score" id="reviewsScore">4.2</div>
+      <div class="reviews-score-meta">
+        <div class="stars" id="reviewsStars"></div>
+        <div class="count" id="reviewsCount">86 reviews</div>
+      </div>
+    </div>
+    <button class="write-review-btn" onclick="toggleReviewForm()">Write a Review</button>
+  </div>  <div class="review-form-wrap" id="reviewFormWrap">
+    <h3>Share your experience</h3>
+    <div class="star-select" id="starSelect">
+      <svg viewBox="0 0 24 24" fill="currentColor" data-star="1"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor" data-star="2"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor" data-star="3"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor" data-star="4"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>
+      <svg viewBox="0 0 24 24" fill="currentColor" data-star="5"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>
+    </div>
+    <div class="co-field">
+      <label for="reviewName">Your name</label>
+      <input type="text" id="reviewName" placeholder="Jordan Ellis">
+    </div>
+    <div class="co-field">
+      <label for="reviewText">Your review</label>
+      <textarea id="reviewText" placeholder="What did you think?"></textarea>
+    </div>
+    <button class="review-submit-btn" onclick="submitReview()">Submit Review</button>
+  </div>  <div class="review-list" id="reviewList"></div>
+</section><div class="stitch" aria-hidden="true">
+  <svg viewBox="0 0 400 18" preserveAspectRatio="none"><line x1="0" y1="9" x2="400" y2="9" stroke="#5c7c89" stroke-width="1.5" stroke-dasharray="10 8" stroke-linecap="round"/></svg>
+</div><!-- ================= RELATED PRODUCTS ================= -->
+<section class="container related">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow">Complete the look</div>
+      <h2>You might also like</h2>
+    </div>
+  </div>  <div class="related-grid">
+    <a href="product.html?id=m2" class="rel-card" data-id="m2">
+      <div class="rel-media"><img loading="lazy" decoding="async" src="images/1622445275576-721325763afe-500.jpg" alt="Heavyweight Tee"></div>
+      <h3>Heavyweight Tee</h3>
+      <div class="price">$58</div>
+    </a>
+    <a href="product.html?id=m3" class="rel-card" data-id="m3">
+      <div class="rel-media"><img loading="lazy" decoding="async" src="images/1541099649105-f69ad21f3246-500.jpg" alt="Straight Raw Denim"></div>
+      <h3>Straight Raw Denim</h3>
+      <div class="price">$149</div>
+    </a>
+    <a href="product.html?id=m4" class="rel-card" data-id="m4">
+      <div class="rel-media"><img loading="lazy" decoding="async" src="images/1614975059251-992f11792b9f-500.jpg" alt="Reclaimed Wool Crew"></div>
+      <h3>Reclaimed Wool Crew</h3>
+      <div class="price">$128</div>
+    </a>
+    <a href="product.html?id=m5" class="rel-card" data-id="m5">
+      <div class="rel-media"><img loading="lazy" decoding="async" src="images/1591047139829-d91aecb6caea-500.jpg" alt="Long Wool Overcoat"></div>
+      <h3>Long Wool Overcoat</h3>
+      <div class="price">$298</div>
+    </a>
+  </div>
+</section><!-- ================= FOOTER ================= -->
+<script>klo_writeFooter()</script><div class="toast" id="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <span id="toast-msg">Message</span>
+</div><!-- ================= SIZE GUIDE MODAL ================= -->
+<div class="modal-overlay" id="sizeModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Size Guide</h3>
+      <button class="modal-close" onclick="closeSizeGuide()" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <table class="size-table">
+      <thead>
+        <tr><th>Size</th><th>Chest (in)</th><th>Length (in)</th><th>Sleeve (in)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>XS</td><td>36–38</td><td>27</td><td>24</td></tr>
+        <tr><td>S</td><td>38–40</td><td>27.5</td><td>24.5</td></tr>
+        <tr><td>M</td><td>40–42</td><td>28</td><td>25</td></tr>
+        <tr><td>L</td><td>42–44</td><td>28.5</td><td>25.5</td></tr>
+        <tr><td>XL</td><td>44–46</td><td>29</td><td>26</td></tr>
+      </tbody>
+    </table>
+    <p class="modal-note">Measurements taken flat, garment laid open. If between sizes, we recommend sizing up for a relaxed fit.</p>
+  </div>
+</div><script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* ---------- TOAST ---------- */
+  function showToast(msg){
+    const toast = document.getElementById('toast');
+    document.getElementById('toast-msg').textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toast._timeout);
+    toast._timeout = setTimeout(() => toast.classList.remove('show'), 3000);
+  }  /* ---------- LOAD PRODUCT FROM URL ?id= ---------- */
+  const urlParams = new URLSearchParams(window.location.search);
+  const currentId = urlParams.get('id') || 'm1';
+  const currentProduct = KLO_PRODUCTS[currentId] || KLO_PRODUCTS['m1'];  function populateProduct(product){
+    document.title = product.name + ' — KLO';
+    document.getElementById('pageEyebrow').textContent = product.category + ' — Archive 04';
+    document.getElementById('pageTitle').textContent = product.name;
+    document.getElementById('pageDesc').textContent = product.desc;
+    document.getElementById('mainImage').src = product.image;
+    document.getElementById('mainImage').alt = product.name;    // Breadcrumb
+    document.getElementById('breadcrumbGender').textContent = product.gender;
+    document.getElementById('breadcrumbGender').href = product.gender === 'Women' ? 'women.html' : 'men.html';
+    document.getElementById('breadcrumbCategory').textContent = product.category;
+    document.getElementById('breadcrumbCategory').href = product.gender === 'Women' ? 'women.html' : 'men.html';
+    document.getElementById('breadcrumbName').textContent = product.name;    // Price
+    const priceEl = document.getElementById('pdpPrice');
+    if (product.oldPrice){
+      priceEl.innerHTML = `<span class="strike">$${product.oldPrice}</span>$${product.price}<span class="save-tag">Save $${product.oldPrice - product.price}</span>`;
+    } else {
+      priceEl.textContent = '$' + product.price;
+    }    // Thumbnails (reuse main image across all 4 slots for consistency in this demo catalog)
+    document.querySelectorAll('.thumb img').forEach(img => { img.src = product.image; });
+    document.querySelectorAll('.thumb').forEach((t, i) => {
+      t.dataset.img = product.image;
+      t.classList.toggle('active', i === 0);
+    });    // Colors
+    const colorRow = document.getElementById('colorRow');
+    colorRow.innerHTML = product.colors.map((c, i) => {
+      const colorMap = {
+        'Deep Teal':'#1f4959','Midnight':'#011425','Stone':'#c9c1b3','Charcoal':'#242424',
+        'Slate':'#5c7c89','Indigo':'#2d3e50','Olive':'#3a3a2e','Washed Indigo':'#3e5670'
+      };
+      const hex = colorMap[c] || '#999';
+      return `<button class="color-swatch${i===0?' active':''}" data-color="${c}"><span class="fill" style="background:${hex};"></span></button>`;
+    }).join('');
+    document.getElementById('colorVal').textContent = product.colors[0];    bindColorSwatches();
+  }  function bindColorSwatches(){
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+        swatch.classList.add('active');
+        document.getElementById('colorVal').textContent = swatch.dataset.color;
+      });
+    });
+  }  populateProduct(currentProduct);  /* ---------- REVIEWS ---------- */
+  const SAMPLE_REVIEWS = {
+    m1: [
+      { author:'Daniel R.', rating:5, date:'2026-06-14', text:'Wore this through an entire wet winter. The wax held up better than I expected and it only looks better broken in.' },
+      { author:'Priya K.', rating:4, date:'2026-05-02', text:'Great fit through the shoulders, runs slightly long which I like. Docked one star only because the wax scent took a week to fade.' },
+      { author:'Marcus T.', rating:4, date:'2026-03-28', text:'Solid build quality. Storm flap actually works. Would buy the overcoat next.' }
+    ],
+    default: [
+      { author:'Alex M.', rating:4, date:'2026-04-11', text:'Good quality for the price, holds up to regular wear.' },
+      { author:'Sam W.', rating:5, date:'2026-02-19', text:'Fit true to size, fabric feels substantial. Happy with this one.' },
+      { author:'Jordan P.', rating:4, date:'2026-01-08', text:'Does what it says — simple, well made, no complaints after a few months of wear.' }
+    ]
+  };  function klo_getReviews(productId){
+    const key = 'klo_reviews_' + productId;
+    let stored;
+    try { stored = JSON.parse(localStorage.getItem(key)); } catch(e) { stored = null; }
+    if (stored) return stored;
+    const seed = SAMPLE_REVIEWS[productId] || SAMPLE_REVIEWS.default;
+    localStorage.setItem(key, JSON.stringify(seed));
+    return seed;
+  }  function klo_addReview(productId, review){
+    const key = 'klo_reviews_' + productId;
+    const reviews = klo_getReviews(productId);
+    reviews.unshift(review);
+    localStorage.setItem(key, JSON.stringify(reviews));
+  }  function starSvg(filled){
+    return `<svg viewBox="0 0 24 24" fill="${filled ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></svg>`;
+  }  function renderReviews(){
+    const reviews = klo_getReviews(currentProduct.id);
+    const avg = reviews.length ? (reviews.reduce((s,r) => s + r.rating, 0) / reviews.length) : 0;    document.getElementById('reviewsScore').textContent = avg.toFixed(1);
+    document.getElementById('reviewsCount').textContent = `${reviews.length} review${reviews.length !== 1 ? 's' : ''}`;
+    document.getElementById('reviewsStars').innerHTML = [1,2,3,4,5].map(i => starSvg(i <= Math.round(avg))).join('');    const listEl = document.getElementById('reviewList');
+    if (reviews.length === 0){
+      listEl.innerHTML = '<div class="review-empty">No reviews yet — be the first to share your experience.</div>';
+      return;
+    }
+    listEl.innerHTML = reviews.map(r => `
+      <div class="review-item">
+        <div class="review-item-head">
+          <div>
+            <div class="review-author">${r.author}</div>
+            <div class="stars">${[1,2,3,4,5].map(i => starSvg(i <= r.rating)).join('')}</div>
+          </div>
+          <div class="review-date">${new Date(r.date).toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' })}</div>
+        </div>
+        <div class="review-text">${r.text}</div>
+      </div>
+    `).join('');
+  }
+  renderReviews();  let selectedRating = 5;
+  document.querySelectorAll('#starSelect svg').forEach(star => {
+    star.classList.add('selected');
+    star.addEventListener('click', () => {
+      selectedRating = parseInt(star.dataset.star, 10);
+      document.querySelectorAll('#starSelect svg').forEach(s => {
+        s.classList.toggle('selected', parseInt(s.dataset.star, 10) <= selectedRating);
+      });
+    });
+  });  function toggleReviewForm(){
+    document.getElementById('reviewFormWrap').classList.toggle('open');
+  }  function submitReview(){
+    const name = document.getElementById('reviewName').value.trim();
+    const text = document.getElementById('reviewText').value.trim();
+    if (!name || !text){
+      showToast('Please add your name and a short review');
+      return;
+    }
+    klo_addReview(currentProduct.id, {
+      author: name,
+      rating: selectedRating,
+      date: new Date().toISOString().slice(0,10),
+      text: text
+    });
+    document.getElementById('reviewName').value = '';
+    document.getElementById('reviewText').value = '';
+    document.getElementById('reviewFormWrap').classList.remove('open');
+    renderReviews();
+    showToast('Thanks — your review has been posted');
+  }  /* ---------- GALLERY ---------- */
+  document.querySelectorAll('.thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+      document.getElementById('mainImage').src = thumb.dataset.img;
+    });
+  });  /* ---------- SIZE SELECT ---------- */
+  let selectedSize = 'M';
+  document.querySelectorAll('.size-btn:not(.disabled)').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedSize = btn.dataset.size;
+      document.getElementById('sizeError').classList.remove('show');
+    });
+  });  /* ---------- QTY ---------- */
+  let qty = 1;
+  function changeQty(delta){
+    qty = Math.max(1, Math.min(9, qty + delta));
+    document.getElementById('qtyVal').textContent = qty;
+  }  /* ---------- ADD TO CART (real localStorage) ---------- */
+  function addToCart(){
+    if (!selectedSize){
+      document.getElementById('sizeError').classList.add('show');
+      return;
+    }
+    const btn = document.getElementById('addToCartBtn');
+    const label = document.getElementById('addToCartLabel');
+    btn.classList.add('added');
+    label.textContent = 'Added ✓';    const color = document.getElementById('colorVal').textContent;
+    klo_addToCart(currentProduct, color, selectedSize, qty);    showToast(`Added ${qty} × ${currentProduct.name} (${color}, ${selectedSize}) to cart`);    setTimeout(() => {
+      btn.classList.remove('added');
+      label.textContent = 'Add to Cart';
+    }, 1800);
+  }  /* ---------- WISHLIST (real localStorage) ---------- */
+  function refreshWishlistBtn(){
+    const btn = document.getElementById('wishlistBtn');
+    const wished = klo_isWished(currentProduct.id);
+    btn.classList.toggle('active', wished);
+  }
+  refreshWishlistBtn();  function toggleWishlist(){
+    const nowWished = klo_toggleWishlist(currentProduct);
+    refreshWishlistBtn();
+    showToast(nowWished ? 'Added to wishlist' : 'Removed from wishlist');
+  }  /* ---------- ACCORDION ---------- */
+  function toggleAccordion(head){
+    const item = head.closest('.accordion-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }  /* ---------- SIZE GUIDE MODAL ---------- */
+  function openSizeGuide(){ document.getElementById('sizeModal').classList.add('show'); }
+  function closeSizeGuide(){ document.getElementById('sizeModal').classList.remove('show'); }
+  document.getElementById('sizeModal').addEventListener('click', (e) => {
+    if (e.target.id === 'sizeModal') closeSizeGuide();
+  });  /* ---------- RELATED PRODUCTS: make them dynamic too ---------- */
+  document.querySelectorAll('.rel-card').forEach(card => {
+    const pid = card.dataset.id;
+    if (pid) card.href = 'product.html?id=' + pid;
+  });
+</script>  
+</body>
+</html>

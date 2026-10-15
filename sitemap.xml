@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Run "node set-domain.js https://your-domain.com" to replace example.com -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://example.com/klo-homepage.html</loc></url>
+  <url><loc>https://example.com/men.html</loc></url>
+  <url><loc>https://example.com/women.html</loc></url>
+  <url><loc>https://example.com/product.html</loc></url>
+  <url><loc>https://example.com/our-story.html</loc></url>
+  <url><loc>https://example.com/sustainability.html</loc></url>
+  <url><loc>https://example.com/repairs.html</loc></url>
+  <url><loc>https://example.com/shipping.html</loc></url>
+  <url><loc>https://example.com/contact.html</loc></url>
+  <url><loc>https://example.com/faq.html</loc></url>
+  <url><loc>https://example.com/privacy.html</loc></url>
+  <url><loc>https://example.com/terms.html</loc></url>
+</urlset>

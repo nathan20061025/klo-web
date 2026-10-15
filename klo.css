@@ -1,0 +1,46 @@
+/* KLO shared mobile hardening — linked after each page's own <style>, so it wins. */
+html{-webkit-text-size-adjust:100%;}
+img,video{max-width:100%;}
+body{overflow-x:hidden;}
+
+/* Header: keep the icon row inside narrow screens */
+@media (max-width:480px){
+  .nav-utils{gap:6px;}
+  .icon-btn{min-width:40px; min-height:40px; display:inline-flex; align-items:center; justify-content:center;}
+  .hamburger{width:40px; height:40px;}
+  .logo span.tag{display:none;}
+}
+@media (max-width:360px){
+  .nav-utils{gap:2px;}
+  .icon-btn,.hamburger{min-width:36px; width:36px;}
+}
+
+/* Inputs: 16px stops iOS Safari zooming the page on focus; comfortable tap height */
+@media (max-width:768px){
+  input:not([type="checkbox"]):not([type="radio"]),select,textarea{font-size:16px;}
+  button,.btn,[role="button"]{min-height:40px;}
+}
+
+/* Wide tables/code never push the page sideways */
+table{max-width:100%;}
+
+/* Accordion / FAQ rows: icon must never push the row past the screen */
+.faq-q,.accordion-head{gap:12px; text-align:left;}
+.faq-q svg,.accordion-head svg{flex:none;}
+
+/* Page wrappers (.content-page, .cart-page ...) reset padding to "Npx 0" and wipe the container gutter. Restore it. */
+.container{padding-left:32px !important; padding-right:32px !important; box-sizing:border-box;}
+@media (max-width:640px){.container{padding-left:20px !important; padding-right:20px !important;}}
+.container .container{padding-left:0 !important; padding-right:0 !important;}
+
+/* Grid children default to min-width:auto and can blow a 1fr track wider than the screen */
+.cart-layout > *, .saved-grid > *{min-width:0;}
+@media (max-width:960px){.cart-layout{grid-template-columns:minmax(0,1fr) !important;}}
+@media (max-width:640px){.saved-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}}
+
+/* Inputs inside flex rows (promo, newsletter) must be allowed to shrink */
+input,select,textarea{min-width:0;}
+
+/* Admin-only navbar button */
+.nav-links a.admin-link{border:1px solid currentColor; border-radius:999px; padding:6px 14px; font-weight:600;}
+.mobile-menu a.admin-link{font-weight:700;}

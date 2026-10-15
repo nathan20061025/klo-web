@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Women — KLO</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231f4959'/%3E%3Ctext x='50' y='69' font-size='56' font-family='Georgia,serif' fill='white' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Shop KLO&#39;s women&#39;s collection of durable, timeless clothing built to last.">
+  <meta property="og:title" content="Women — KLO">
+  <meta property="og:description" content="Shop KLO&#39;s women&#39;s collection of durable, timeless clothing built to last.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="KLO">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+    --bg:#ffffff;
+    --ink:#242424;
+    --slate:#5c7c89;
+    --teal:#1f4959;
+    --midnight:#011425;
+    --hairline: rgba(36,36,36,0.12);
+    --hairline-light: rgba(255,255,255,0.16);
+  }  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif; letter-spacing:-0.01em;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  button{font-family:inherit; border:none; cursor:pointer; background:none; color:inherit;}
+  img{display:block; max-width:100%;}
+  .container{max-width:1320px; margin:0 auto; padding:0 32px;}  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+    html{scroll-behavior:auto;}
+  }
+  :focus-visible{outline:2px solid var(--slate); outline-offset:3px;}  .stitch{width:100%; height:18px; display:flex; align-items:center; justify-content:center; overflow:hidden;}
+  .stitch svg{width:100%; height:18px; display:block;}  /* ===== NAVBAR (shared) ===== */
+  .navbar{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    background:rgba(255,255,255,0.88);
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--hairline);
+    transition:box-shadow .3s ease;
+  }
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; height:76px;}
+  .logo{
+    font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:26px;
+    letter-spacing:0.02em; color:var(--midnight);
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .logo span.tag{
+    font-family:'Inter',sans-serif; font-weight:400; font-size:10px;
+    letter-spacing:0.14em; text-transform:uppercase; color:var(--slate);
+  }
+  .nav-links{display:flex; gap:40px; position:absolute; left:50%; transform:translateX(-50%);}
+  .nav-links a{
+    font-size:14px; font-weight:500; color:var(--ink); position:relative; padding:6px 0;
+    transition:color .25s ease;
+  }
+  .nav-links a.active{color:var(--teal);}
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0%; height:1.5px;
+    background:var(--slate); transition:width .25s ease;
+  }
+  .nav-links a.active::after{width:100%;}
+  .nav-links a:hover{color:var(--teal);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-utils{display:flex; align-items:center; gap:22px;}
+  .icon-btn{
+    display:flex; align-items:center; justify-content:center; width:36px; height:36px;
+    color:var(--ink); position:relative; transition:color .2s ease, transform .2s ease;
+  }
+  .icon-btn:hover{color:var(--teal); transform:translateY(-1px);}
+  .icon-btn svg{width:20px; height:20px;}
+  .cart-badge{
+    position:absolute; top:1px; right:1px; background:var(--midnight); color:#fff;
+    font-size:10px; font-weight:600; width:16px; height:16px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; line-height:1;
+  }
+  .hamburger{display:none; flex-direction:column; gap:5px; width:36px; height:36px; align-items:center; justify-content:center;}
+  .hamburger span{display:block; width:22px; height:2px; background:var(--ink); transition:transform .3s ease, opacity .3s ease;}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .mobile-menu{
+    position:fixed; top:76px; left:0; right:0; background:#fff;
+    border-bottom:1px solid var(--hairline); max-height:0; overflow:hidden;
+    transition:max-height .35s ease; z-index:999;
+  }
+  .mobile-menu.open{max-height:480px;}
+  .mobile-menu ul{padding:8px 32px 24px;}
+  .mobile-menu li{border-bottom:1px solid var(--hairline);}
+  .mobile-menu a{display:block; padding:16px 0; font-size:16px; font-weight:500;}
+  .mobile-menu a.active{color:var(--teal);}  @media (max-width: 900px){
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+  }  /* ===== PAGE HERO ===== */
+  .page-hero{
+    position:relative;
+    height:56vh;
+    min-height:380px;
+    display:flex;
+    align-items:flex-end;
+    background:
+      linear-gradient(180deg, rgba(1,20,37,0.25) 0%, rgba(1,20,37,0.55) 60%, rgba(1,20,37,0.95) 100%),
+      url('images/1483985988355-763728e1935b-1800.jpg') center 25%/cover no-repeat;
+    color:#fff;
+    padding-top:76px;
+  }
+  .page-hero-inner{width:100%; padding-bottom:56px;}
+  .breadcrumb{
+    font-size:12px; letter-spacing:0.1em; text-transform:uppercase;
+    color:rgba(255,255,255,0.65); margin-bottom:18px; font-weight:500;
+  }
+  .breadcrumb a{color:rgba(255,255,255,0.65); transition:color .2s ease;}
+  .breadcrumb a:hover{color:#fff;}
+  .page-hero h1{
+    font-size:clamp(38px, 5.5vw, 64px);
+    font-weight:600;
+    line-height:1.02;
+  }
+  .page-hero p{
+    font-size:15px; font-weight:300; color:rgba(255,255,255,0.8);
+    max-width:44ch; margin-top:16px; line-height:1.65;
+  }  /* ===== TOOLBAR ===== */
+  .shop-toolbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:28px 0;
+    border-bottom:1px solid var(--hairline);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .filter-row{display:flex; gap:10px; flex-wrap:wrap;}
+  .filter-chip{
+    padding:9px 18px;
+    border:1px solid var(--hairline);
+    border-radius:999px;
+    font-size:13px;
+    font-weight:500;
+    color:var(--ink);
+    transition:all .2s ease;
+    white-space:nowrap;
+  }
+  .filter-chip:hover{border-color:var(--slate); color:var(--teal);}
+  .filter-chip.active{background:var(--midnight); border-color:var(--midnight); color:#fff;}
+  .result-meta{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    font-size:13px;
+    color:#6b6b6b;
+  }
+  .sort-select{
+    border:1px solid var(--hairline);
+    border-radius:2px;
+    padding:9px 14px;
+    font-size:13px;
+    font-family:inherit;
+    color:var(--ink);
+    background:#fff;
+    cursor:pointer;
+  }  /* ===== PRODUCT GRID ===== */
+  .shop-section{padding:48px 0 110px;}
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:32px 24px;
+  }
+  .product-card{cursor:pointer;}
+  .product-media{
+    position:relative;
+    aspect-ratio:3/4;
+    overflow:hidden;
+    border-radius:2px;
+    background:#eee;
+    margin-bottom:16px;
+  }
+  .product-media img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .6s cubic-bezier(.2,.8,.2,1), opacity .4s ease;
+  }
+  .product-media img.img-alt{
+    position:absolute; inset:0; opacity:0;
+  }
+  .product-card:hover .img-main{opacity:0;}
+  .product-card:hover .img-alt{opacity:1;}
+  .product-tag{
+    position:absolute; top:14px; left:14px;
+    background:#fff; color:var(--midnight);
+    font-size:10.5px; font-weight:600; letter-spacing:0.05em; text-transform:uppercase;
+    padding:5px 10px; border-radius:2px;
+    z-index:2;
+  }
+  .product-tag.new{background:var(--slate); color:#fff;}
+  .product-wish{
+    position:absolute; top:12px; right:12px; z-index:2;
+    width:32px; height:32px; border-radius:50%;
+    background:rgba(255,255,255,0.9);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--ink);
+    transition:background .2s ease, color .2s ease, transform .2s ease;
+  }
+  .product-wish:hover{background:var(--midnight); color:#fff; transform:scale(1.06);}
+  .product-wish svg{width:16px; height:16px;}
+  .product-info h3{
+    font-size:15px;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:4px;
+  }
+  .product-info .meta{
+    font-size:12.5px;
+    color:#8a8a8a;
+    font-weight:300;
+  }
+  .product-info .price{
+    font-size:14px;
+    font-weight:600;
+    color:var(--midnight);
+    margin-top:8px;
+  }
+  .product-info .price .strike{
+    text-decoration:line-through;
+    color:#b0b0b0;
+    font-weight:400;
+    margin-right:8px;
+  }
+  .swatches{display:flex; gap:6px; margin-top:10px;}
+  .swatch{
+    width:14px; height:14px; border-radius:50%;
+    border:1px solid rgba(0,0,0,0.15);
+  }  @media (max-width: 1100px){
+    .product-grid{grid-template-columns:repeat(3, 1fr); gap:28px 20px;}
+  }
+  @media (max-width: 720px){
+    .product-grid{grid-template-columns:repeat(2, 1fr); gap:24px 16px;}
+    .shop-toolbar{padding:22px 0;}
+  }  /* ===== LOAD MORE ===== */
+  .load-more-wrap{display:flex; justify-content:center; margin-top:64px;}
+  .load-more{
+    padding:15px 38px;
+    border:1px solid var(--midnight);
+    color:var(--midnight);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.03em;
+    border-radius:2px;
+    transition:background .25s ease, color .25s ease;
+  }
+  .load-more:hover{background:var(--midnight); color:#fff;}  /* ===== FOOTER (shared) ===== */
+  footer{background:var(--midnight); color:rgba(255,255,255,0.85); padding:90px 0 0;}
+  .footer-grid{
+    display:grid; grid-template-columns:1.4fr 1fr 1fr 1.3fr; gap:48px;
+    padding-bottom:64px; border-bottom:1px solid var(--hairline-light);
+  }
+  .footer-brand .logo-f{font-family:'Space Grotesk',sans-serif; font-size:28px; font-weight:700; color:#fff; margin-bottom:16px;}
+  .footer-brand p{font-size:13.5px; font-weight:300; color:rgba(255,255,255,0.55); max-width:32ch; line-height:1.7;}
+  .footer-col h5{font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--slate); font-weight:600; margin-bottom:22px;}
+  .footer-col ul li{margin-bottom:13px;}
+  .footer-col a{font-size:14px; font-weight:300; color:rgba(255,255,255,0.72); transition:color .2s ease;}
+  .footer-col a:hover{color:#fff;}
+  .newsletter-form{display:flex; border-bottom:1px solid rgba(255,255,255,0.35); padding-bottom:10px; margin-top:6px;}
+  .newsletter-form input{flex:1; background:transparent; border:none; color:#fff; font-size:14px; font-family:inherit; padding:6px 0;}
+  .newsletter-form input::placeholder{color:rgba(255,255,255,0.45);}
+  .newsletter-form button{color:var(--slate); font-size:13px; font-weight:600; letter-spacing:0.04em; white-space:nowrap; transition:color .2s ease;}
+  .newsletter-form button:hover{color:#fff;}
+  .newsletter-note{font-size:12px; color:rgba(255,255,255,0.4); margin-top:12px;}
+  .social-row{display:flex; gap:14px; margin-top:24px;}
+  .social-row a{
+    width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+    border:1px solid rgba(255,255,255,0.25); border-radius:50%;
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .social-row a:hover{border-color:var(--slate); background:rgba(92,124,137,0.15);}
+  .social-row svg{width:16px; height:16px;}
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center; padding:28px 0;
+    font-size:12.5px; color:rgba(255,255,255,0.45); flex-wrap:wrap; gap:12px;
+  }
+  .footer-bottom .legal-links{display:flex; gap:24px;}
+  .footer-bottom .legal-links a:hover{color:#fff;}
+  @media (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr; gap:40px 24px;}}
+  @media (max-width:560px){.footer-grid{grid-template-columns:1fr;} footer{padding-top:64px;}}  /* ===== TOAST ===== */
+  .toast{
+    position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--midnight); color:#fff; padding:14px 22px; border-radius:4px;
+    font-size:13.5px; font-weight:500; display:flex; align-items:center; gap:10px;
+    opacity:0; pointer-events:none; transition:opacity .3s ease, transform .3s ease;
+    z-index:2000; box-shadow:0 12px 32px rgba(0,0,0,0.25);
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0); pointer-events:auto;}
+  .toast svg{width:16px; height:16px; color:var(--slate); flex-shrink:0;}  .account-icon-initials{
+    display:none;
+    align-items:center; justify-content:center;
+    width:26px; height:26px;
+    border-radius:50%;
+    background:var(--midnight);
+    color:#fff;
+    font-size:10.5px;
+    font-weight:700;
+    font-family:'Space Grotesk',sans-serif;
+  }
+</style>
+<link rel="stylesheet" href="klo.css">
+<script src="klo.js"></script>
+<link rel="canonical" href="https://example.com/women.html">
+</head>
+<body><!-- ================= NAVBAR ================= -->
+<script>klo_writeHeader('women')</script><!-- ================= PAGE HERO ================= -->
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <div class="breadcrumb"><a href="klo-homepage.html">Home</a> / Women</div>
+    <h1>Womenswear, made to outlast trends.</h1>
+    <p>Tailored outerwear, everyday knitwear, and denim cut to move — natural fibers and considered construction, season after season.</p>
+  </div>
+</section><!-- ================= SHOP ================= -->
+<section class="container shop-section">
+  <div class="shop-toolbar">
+    <div class="filter-row">
+      <button class="filter-chip active" data-filter="all">All</button>
+      <button class="filter-chip" data-filter="outerwear">Outerwear</button>
+      <button class="filter-chip" data-filter="essentials">Essentials</button>
+      <button class="filter-chip" data-filter="denim">Denim</button>
+      <button class="filter-chip" data-filter="knitwear">Knitwear</button>
+    </div>
+    <div class="result-meta">
+      <span id="resultCount">8 items</span>
+      <select class="sort-select" aria-label="Sort products">
+        <option>Sort: Featured</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Newest</option>
+      </select>
+    </div>
+  </div>  <div class="product-grid" id="productGrid">    <a href="product.html?id=w1" class="product-card" data-category="outerwear" data-id="w1">
+      <div class="product-media">
+        <span class="product-tag new">New</span>
+        <button class="product-wish" aria-label="Add to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+        <img loading="lazy" decoding="async" class="img-main" src="images/1539533018447-63fcce2678e3-700.jpg" alt="Wool trench coat">
+        <img loading="lazy" decoding="async" class="img-alt" src="images/1548624313-0396c75e4b1a-700.jpg" alt="Wool trench coat, styled">
+      </div>
+      <div class="product-info">
+        <h3>Tailored Wool Trench</h3>
+        <div class="meta">Deep Teal · Virgin Wool</div>
+        <div class="price">$268</div>
+        <div class="swatches">
+          <span class="swatch" style="background:#1f4959;"></span>
+          <span class="swatch" style="background:#011425;"></span>
+          <span class="swatch" style="background:#c9c1b3;"></span>
+        </div>
+      </div>
+    </a>    <a href="product.html?id=w2" class="product-card" data-category="essentials" data-id="w2">
+      <div class="product-media">
+        <button class="product-wish" aria-label="Add to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+        <img loading="lazy" decoding="async" class="img-main" src="images/1571945153237-4929e783af4a-700.jpg" alt="Organic cotton tee">
+        <img loading="lazy" decoding="async" class="img-alt" src="images/1583744946564-b52ac1c389c8-700.jpg" alt="Organic cotton tee, styled">
+      </div>
+      <div class="product-info">
+        <h3>Relaxed Cotton Tee</h3>
+        <div class="meta">Stone · 220gsm Cotton</div>
+        <div class="price">$54</div>
+        <div class="swatches">
+          <span class="swatch" style="background:#d9d3c4;"></span>
+          <span class="swatch" style="background:#242424;"></span>
+          <span class="swatch" style="background:#5c7c89;"></span>
+        </div>
+      </div>
+    </a>    <a href="product.html?id=w3" class="product-card" data-category="denim" data-id="w3">
+      <div class="product-media">
+        <button class="product-wish" aria-label="Add to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+        <img loading="lazy" decoding="async" class="img-main" src="images/1541099649105-f69ad21f3246-700.jpg" alt="Straight leg denim">
+        <img loading="lazy" decoding="async" class="img-alt" src="images/1475178626620-a4d074967452-700.jpg" alt="Straight leg denim, detail">
+      </div>
+      <div class="product-info">
+        <h3>High-Rise Straight Denim</h3>
+        <div class="meta">Indigo · Organic Cotton</div>
+        <div class="price"><span class="strike">$178</span>$142</div>
+        <div class="swatches">
+          <span class="swatch" style="background:#2d3e50;"></span>
+          <span class="swatch" style="background:#011425;"></span>
+        </div>
+      </div>
+    </a>    <a href="product.html?id=w4" class="product-card" data-category="knitwear" data-id="w4">
+      <div class="product-media">
+        <span class="product-tag new">New</span>
+        <button class="product-wish" aria-label="Add to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+        <img loading="lazy" decoding="async" class="img-main" src="images/1576871337622-98d48d1cf531-700.jpg" alt="Merino wool sweater">
+        <img loading="lazy" decoding="async" class="img-alt" src="images/1596993100471-c3905dafa78e-700.jpg" alt="Merino wool sweater, styled">
+      </div>
+      <div class="product-info">
+        <h3>Reclaimed Merino Sweater</h3>
+        <div class="meta">Charcoal · 80% Wool</div>
+        <div class="price">$132</div>
+        <div class="swatches">
+          <span class="swatch" style="background:#242424;"></span>
+          <span class="swatch" style="background:#5c7c89;"></span>
+        </div>
+      </div>
+    </a>    <a href="product.html?id=w5" class="product-card" data-category="outerwear" data-id="w5">
+      <div class="product-media">
+        <button class="product-wish" aria-label="Add to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+        <img loading="lazy" decoding="async" class="img-main" src="images/1548126032-079a0fb0099d-700.jpg" alt="Long wool coat">
+        <img loading="lazy" decoding="async" class="img-alt" src="images/1544923246-77307dd654cb-700.jpg" alt="Long wool coat, styled">
+      </div>
+      <div class="product-info">
+        <h3>Long Wool Coat</h3>
+        <div class="meta">Midnight · Wool Blend</div>
+        <div class="price">$312</div>
+        <div class="swatches">
+          <span class="swatch" style="background:#011425;"></span>
+          <span class="swatch" style="background:#242424;"></span>
+        </div>
+      </div>
+    </a>    <a href="product.html?id=w6" class="product-card" data-category="essentials" data-id="w6">
+      <div class="product-media">
+        <button class="product-wish" aria-label="Add to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+        <img loading="lazy" decoding="async" class="img-main" src="images/1551803091-e20673f15770-700.jpg" alt="Linen blend shirt">
+        <img loading="lazy" decoding="async" class="img-alt" src="images/1598554747436-c9293d6a588f-700.jpg" alt="Linen blend shirt, styled">
+      </div>
+      <div class="product-info">
+        <h3>Brushed Linen Shirt</h3>
+        <div class="meta">Olive · Linen Blend</div>
+        <div class="price">$92</div>
+        <div class="swatches">
+          <span class="swatch" style="background:#5c7c89;"></span>
+          <span class="swatch" style="background:#3a3a2e;"></span>
+        </div>
+      </div>
+    </a>    <a href="product.html?id=w7" class="product-card" data-category="denim" data-id="w7">
+      <div class="product-media">
+        <button class="product-wish" aria-label="Add to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+        <img loading="lazy" decoding="async" class="img-main" src="images/1601333144130-8cbb312386b6-700.jpg" alt="Denim jacket">
+        <img loading="lazy" decoding="async" class="img-alt" src="images/1584370848010-d7fe6bc767ec-700.jpg" alt="Denim jacket, detail">
+      </div>
+      <div class="product-info">
+        <h3>Cropped Denim Jacket</h3>
+        <div class="meta">Washed Indigo · Cotton</div>
+        <div class="price">$158</div>
+        <div class="swatches">
+          <span class="swatch" style="background:#3e5670;"></span>
+          <span class="swatch" style="background:#1a2733;"></span>
+        </div>
+      </div>
+    </a>    <a href="product.html?id=w8" class="product-card" data-category="knitwear" data-id="w8">
+      <div class="product-media">
+        <button class="product-wish" aria-label="Add to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+        <img loading="lazy" decoding="async" class="img-main" src="images/1610652492500-ded49ceeb378-700.jpg" alt="Wool cardigan">
+        <img loading="lazy" decoding="async" class="img-alt" src="images/1516826957135-700dedea698c-700.jpg" alt="Wool cardigan, styled">
+      </div>
+      <div class="product-info">
+        <h3>Mended-Edge Cardigan</h3>
+        <div class="meta">Slate · Merino Wool</div>
+        <div class="price">$138</div>
+        <div class="swatches">
+          <span class="swatch" style="background:#5c7c89;"></span>
+          <span class="swatch" style="background:#011425;"></span>
+        </div>
+      </div>
+    </a>  </div>  <div class="load-more-wrap">
+    <button class="load-more" id="loadMoreBtn">Load more</button>
+  </div>
+</section><div class="stitch" aria-hidden="true">
+  <svg viewBox="0 0 400 18" preserveAspectRatio="none"><line x1="0" y1="9" x2="400" y2="9" stroke="#5c7c89" stroke-width="1.5" stroke-dasharray="10 8" stroke-linecap="round"/></svg>
+</div><!-- ================= FOOTER ================= -->
+<script>klo_writeFooter()</script><script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  const chips = document.querySelectorAll('.filter-chip');
+  const cards = document.querySelectorAll('.product-card');
+  const resultCount = document.getElementById('resultCount');  function applyFilter(filter, pushState){
+    chips.forEach(c => c.classList.toggle('active', c.dataset.filter === filter));
+    let visible = 0;
+    cards.forEach(card => {
+      const match = filter === 'all' || card.dataset.category === filter;
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    resultCount.textContent = `${visible} item${visible !== 1 ? 's' : ''}`;    if (pushState){
+      const url = new URL(window.location);
+      if (filter === 'all'){
+        url.searchParams.delete('category');
+      } else {
+        url.searchParams.set('category', filter);
+      }
+      window.history.replaceState({}, '', url);
+    }
+  }  chips.forEach(chip => {
+    chip.addEventListener('click', () => applyFilter(chip.dataset.filter, true));
+  });  const urlParams = new URLSearchParams(window.location.search);
+  const initialCategory = urlParams.get('category');
+  if (initialCategory && Array.from(chips).some(c => c.dataset.filter === initialCategory)){
+    applyFilter(initialCategory, false);
+  }  document.querySelectorAll('.product-card').forEach(card => {
+    const pid = card.dataset.id;
+    const wishBtn = card.querySelector('.product-wish');
+    if (!pid || !wishBtn) return;    function refreshWishIcon(){
+      const wished = klo_isWished(pid);
+      wishBtn.classList.toggle('wished', wished);
+      wishBtn.style.color = wished ? '#fff' : '';
+      wishBtn.style.background = wished ? '#011425' : '';
+    }
+    refreshWishIcon();    wishBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const product = KLO_PRODUCTS[pid];
+      if (!product) return;
+      const nowWished = klo_toggleWishlist(product);
+      refreshWishIcon();
+      showToast(nowWished ? 'Added to wishlist' : 'Removed from wishlist');
+    });
+  });  document.getElementById('loadMoreBtn').addEventListener('click', function(){
+    this.textContent = 'That\u2019s the full archive — for now';
+    this.disabled = true;
+    this.style.opacity = '0.5';
+    this.style.cursor = 'default';
+  });
+</script><div class="toast" id="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <span id="toast-msg">Message</span>
+</div>  
+</body>
+</html>

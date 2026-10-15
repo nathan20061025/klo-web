@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — KLO</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231f4959'/%3E%3Ctext x='50' y='69' font-size='56' font-family='Georgia,serif' fill='white' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+  <meta name="description" content="Sign in or create an account with KLO.">
+  <meta property="og:title" content="Sign In — KLO">
+  <meta property="og:description" content="Sign in or create an account with KLO.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="KLO">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+    --bg:#ffffff;
+    --ink:#242424;
+    --slate:#5c7c89;
+    --teal:#1f4959;
+    --midnight:#011425;
+    --hairline: rgba(36,36,36,0.12);
+    --hairline-light: rgba(255,255,255,0.16);
+    --error:#b23b3b;
+    --success:#3b7a5c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif; letter-spacing:-0.01em;}
+  a{text-decoration:none; color:inherit;}
+  button{font-family:inherit; border:none; cursor:pointer; background:none; color:inherit;}
+  img{display:block; max-width:100%;}
+  input{font-family:inherit;}
+  :focus-visible{outline:2px solid var(--slate); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }  /* ===== LAYOUT ===== */
+  .auth-wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:100vh;
+  }
+  .auth-visual{
+    position:relative;
+    background:
+      linear-gradient(180deg, rgba(1,20,37,0.35) 0%, rgba(1,20,37,0.65) 60%, rgba(1,20,37,0.96) 100%),
+      url('images/1516257984-b1b4d707412e-1400.jpg') center 30%/cover no-repeat;
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:48px;
+  }
+  .auth-visual .logo{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:26px;
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+  }
+  .auth-visual .logo span.tag{
+    font-family:'Inter',sans-serif;
+    font-weight:400;
+    font-size:10px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--slate);
+  }
+  .visual-quote{
+    max-width:26ch;
+  }
+  .visual-quote .eyebrow{
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--slate);
+    font-weight:600;
+    margin-bottom:16px;
+  }
+  .visual-quote h2{
+    font-size:clamp(24px, 2.6vw, 32px);
+    font-weight:600;
+    line-height:1.3;
+  }  .auth-panel{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:48px 24px;
+  }
+  .auth-card{
+    width:100%;
+    max-width:400px;
+  }
+  .back-home{
+    display:none;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    font-weight:500;
+    color:var(--slate);
+    margin-bottom:28px;
+  }  @media (max-width: 900px){
+    .auth-wrap{grid-template-columns:1fr;}
+    .auth-visual{display:none;}
+    .back-home{display:inline-flex;}
+  }  /* ===== FORM STEPS ===== */
+  .step{display:none;}
+  .step.active{display:block; animation:fadeIn .35s ease;}
+  @keyframes fadeIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }  .step-eyebrow{
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--slate);
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .step h1{
+    font-size:clamp(26px, 3vw, 32px);
+    font-weight:600;
+    color:var(--midnight);
+    margin-bottom:10px;
+  }
+  .step .step-sub{
+    font-size:14px;
+    font-weight:300;
+    color:#666;
+    margin-bottom:32px;
+    line-height:1.6;
+  }
+  .step .step-sub b{font-weight:600; color:var(--ink);}  .field{margin-bottom:20px;}
+  .field label{
+    display:block;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:8px;
+    letter-spacing:0.01em;
+  }
+  .input-wrap{position:relative;}
+  .field input{
+    width:100%;
+    padding:14px 16px;
+    border:1px solid var(--hairline);
+    border-radius:2px;
+    font-size:14px;
+    color:var(--ink);
+    background:#fff;
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .field input:focus{
+    border-color:var(--slate);
+    box-shadow:0 0 0 3px rgba(92,124,137,0.12);
+    outline:none;
+  }
+  .field input.error{border-color:var(--error);}
+  .field-error{
+    font-size:12px;
+    color:var(--error);
+    margin-top:6px;
+    display:none;
+  }
+  .field-error.show{display:block;}
+  .toggle-pw{
+    position:absolute;
+    right:14px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#999;
+    display:flex;
+  }
+  .toggle-pw svg{width:18px; height:18px;}
+  .toggle-pw:hover{color:var(--teal);}  .pw-hint{
+    font-size:11.5px;
+    color:#999;
+    margin-top:6px;
+  }  .btn-primary{
+    width:100%;
+    padding:15px;
+    background:var(--midnight);
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.03em;
+    border-radius:2px;
+    transition:background .25s ease, transform .2s ease, opacity .2s ease;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+  .btn-primary:hover{background:var(--teal);}
+  .btn-primary:active{transform:scale(0.99);}
+  .btn-primary:disabled{opacity:0.5; cursor:not-allowed;}
+  .btn-primary:disabled:hover{background:var(--midnight);}  .btn-ghost{
+    width:100%;
+    padding:15px;
+    border:1px solid var(--hairline);
+    color:var(--ink);
+    font-size:14px;
+    font-weight:600;
+    border-radius:2px;
+    margin-top:10px;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .btn-ghost:hover{border-color:var(--slate); color:var(--teal);}  .divider{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:28px 0;
+    color:#aaa;
+    font-size:12px;
+  }
+  .divider::before, .divider::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:var(--hairline);
+  }  .step-foot{
+    text-align:center;
+    font-size:13.5px;
+    color:#666;
+    margin-top:28px;
+  }
+  .step-foot a, .link-btn{
+    color:var(--teal);
+    font-weight:600;
+    cursor:pointer;
+  }
+  .step-foot a:hover, .link-btn:hover{text-decoration:underline;}  .row-between{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+  }
+  .row-between label{margin-bottom:0;}
+  .forgot-link{
+    font-size:12.5px;
+    color:var(--slate);
+    font-weight:500;
+    cursor:pointer;
+  }
+  .forgot-link:hover{color:var(--teal); text-decoration:underline;}  /* ===== OTP INPUT ===== */
+  .otp-row{
+    display:flex;
+    gap:10px;
+    margin-bottom:8px;
+  }
+  .otp-box{
+    width:100%;
+    aspect-ratio:1;
+    text-align:center;
+    font-size:20px;
+    font-weight:600;
+    font-family:'Space Grotesk',sans-serif;
+    border:1px solid var(--hairline);
+    border-radius:4px;
+    color:var(--midnight);
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .otp-box:focus{
+    border-color:var(--slate);
+    box-shadow:0 0 0 3px rgba(92,124,137,0.12);
+    outline:none;
+  }
+  .otp-box.error{border-color:var(--error);}  .otp-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:12.5px;
+    color:#888;
+    margin-bottom:28px;
+  }
+  .resend{
+    color:var(--teal);
+    font-weight:600;
+    cursor:pointer;
+  }
+  .resend.disabled{
+    color:#bbb;
+    cursor:default;
+    text-decoration:none;
+  }
+  .resend:hover:not(.disabled){text-decoration:underline;}  .demo-note{
+    margin-top:20px;
+    padding:14px 16px;
+    background:#f4f7f8;
+    border:1px dashed var(--hairline);
+    border-radius:4px;
+    font-size:12.5px;
+    color:#666;
+    line-height:1.6;
+  }
+  .demo-note b{color:var(--teal); font-family:'Space Grotesk',sans-serif; letter-spacing:0.04em;}  .success-icon{
+    width:64px; height:64px;
+    border-radius:50%;
+    background:rgba(59,122,92,0.1);
+    color:var(--success);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 24px;
+  }
+  .success-icon svg{width:30px; height:30px;}
+  .step.center-text{text-align:center;}  /* ===== TOAST ===== */
+  .toast{
+    position:fixed;
+    bottom:28px;
+    left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:var(--midnight);
+    color:#fff;
+    padding:14px 22px;
+    border-radius:4px;
+    font-size:13.5px;
+    font-weight:500;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .3s ease, transform .3s ease;
+    z-index:2000;
+    box-shadow:0 12px 32px rgba(0,0,0,0.25);
+  }
+  .toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+    pointer-events:auto;
+  }
+  .toast svg{width:16px; height:16px; color:var(--slate); flex-shrink:0;}
+</style>
+<link rel="stylesheet" href="klo.css">
+<script src="klo.js"></script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body><div class="auth-wrap">  <!-- ================= LEFT VISUAL ================= -->
+  <div class="auth-visual">
+    <a href="klo-homepage.html" class="logo">KLO <span class="tag">Keep Live Old</span></a>
+    <div class="visual-quote">
+      <div class="eyebrow">Member access</div>
+      <h2>Timeless garments for a living history.</h2>
+    </div>
+  </div>  <!-- ================= RIGHT PANEL ================= -->
+  <div class="auth-panel">
+    <div class="auth-card">
+      <a href="klo-homepage.html" class="back-home">← Back to KLO</a>      <!-- ============ STEP: LOGIN ============ -->
+      <section class="step active" id="step-login">
+        <div class="step-eyebrow">Welcome back</div>
+        <h1>Sign in to KLO</h1>
+        <p class="step-sub">Enter your details to access your account.</p>        <form id="loginForm" novalidate>
+          <div class="field">
+            <label for="login-email">Email address</label>
+            <input type="email" id="login-email" placeholder="you@example.com" autocomplete="email">
+            <div class="field-error" id="login-email-error">Enter a valid email address.</div>
+          </div>          <div class="row-between" style="margin-bottom:8px;">
+            <label for="login-pw" style="margin-bottom:0;">Password</label>
+            <span class="forgot-link" onclick="goToStep('step-forgot-email')">Forgot password?</span>
+          </div>
+          <div class="field">
+            <div class="input-wrap">
+              <input type="password" id="login-pw" placeholder="Enter your password" autocomplete="current-password">
+              <button type="button" class="toggle-pw" data-target="login-pw" aria-label="Show password">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <div class="field-error" id="login-pw-error">Enter your password.</div>
+          </div>          <button type="submit" class="btn-primary">Sign In</button>
+        </form>        <div class="divider">or</div>        <p class="step-foot">Don't have an account? <a onclick="goToStep('step-signup')">Create one</a></p>
+      </section>      <!-- ============ STEP: SIGNUP (details) ============ -->
+      <section class="step" id="step-signup">
+        <div class="step-eyebrow">Join KLO</div>
+        <h1>Create your account</h1>
+        <p class="step-sub">We'll send a one-time code to your email to verify it's you.</p>        <form id="signupForm" novalidate>
+          <div class="field">
+            <label for="su-name">Full name</label>
+            <input type="text" id="su-name" placeholder="Jordan Ellis" autocomplete="name">
+            <div class="field-error" id="su-name-error">Enter your full name.</div>
+          </div>          <div class="field">
+            <label for="su-email">Email address</label>
+            <input type="email" id="su-email" placeholder="you@example.com" autocomplete="email">
+            <div class="field-error" id="su-email-error">Enter a valid email address.</div>
+          </div>          <div class="field">
+            <label for="su-phone">Phone number</label>
+            <input type="tel" id="su-phone" placeholder="+1 (555) 000-0000" autocomplete="tel">
+            <div class="field-error" id="su-phone-error">Enter a valid phone number.</div>
+          </div>          <button type="submit" class="btn-primary">Continue</button>
+        </form>        <p class="step-foot">Already have an account? <a onclick="goToStep('step-login')">Sign in</a></p>
+      </section>      <!-- ============ STEP: SIGNUP OTP ============ -->
+      <section class="step" id="step-signup-otp">
+        <div class="step-eyebrow">Verify your email</div>
+        <h1>Enter the code</h1>
+        <p class="step-sub">We sent a 6-digit code to <b id="su-otp-email-display">you@example.com</b>.</p>        <div class="otp-row" id="su-otp-row">
+          <input class="otp-box" maxlength="1" inputmode="numeric" data-otp="signup">
+          <input class="otp-box" maxlength="1" inputmode="numeric" data-otp="signup">
+          <input class="otp-box" maxlength="1" inputmode="numeric" data-otp="signup">
+          <input class="otp-box" maxlength="1" inputmode="numeric" data-otp="signup">
+          <input class="otp-box" maxlength="1" inputmode="numeric" data-otp="signup">
+          <input class="otp-box" maxlength="1" inputmode="numeric" data-otp="signup">
+        </div>
+        <div class="field-error" id="su-otp-error" style="margin-bottom:20px;">Incorrect code. Please try again.</div>        <div class="otp-meta">
+          <span id="su-resend-timer">Resend code in 30s</span>
+          <span class="resend disabled" id="su-resend-btn" onclick="resendOtp('signup')">Resend code</span>
+        </div>        <button class="btn-primary" id="su-verify-btn" onclick="verifyOtp('signup')">Verify & Continue</button>        <div class="demo-note">Demo mode — no real email is sent. Your code is <b id="su-demo-code">------</b></div>        <p class="step-foot"><a onclick="goToStep('step-signup')">← Edit details</a></p>
+      </section>      <!-- ============ STEP: SIGNUP PASSWORD ============ -->
+      <section class="step" id="step-signup-password">
+        <div class="step-eyebrow">Last step</div>
+        <h1>Create a password</h1>
+        <p class="step-sub">Choose a password to finish setting up your account.</p>        <form id="signupPwForm" novalidate>
+          <div class="field">
+            <label for="su-pw">Password</label>
+            <div class="input-wrap">
+              <input type="password" id="su-pw" placeholder="Create a password" autocomplete="new-password">
+              <button type="button" class="toggle-pw" data-target="su-pw" aria-label="Show password">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <div class="pw-hint">At least 8 characters, with a number.</div>
+            <div class="field-error" id="su-pw-error">Password must be at least 8 characters and include a number.</div>
+          </div>          <div class="field">
+            <label for="su-pw-confirm">Confirm password</label>
+            <div class="input-wrap">
+              <input type="password" id="su-pw-confirm" placeholder="Re-enter your password" autocomplete="new-password">
+              <button type="button" class="toggle-pw" data-target="su-pw-confirm" aria-label="Show password">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <div class="field-error" id="su-pw-confirm-error">Passwords do not match.</div>
+          </div>          <button type="submit" class="btn-primary">Create Account</button>
+        </form>
+      </section>      <!-- ============ STEP: SIGNUP SUCCESS ============ -->
+      <section class="step center-text" id="step-signup-success">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h1>Account created</h1>
+        <p class="step-sub">Welcome to KLO, <b id="su-success-name">Jordan</b>. Your account is ready.</p>
+        <button class="btn-primary" onclick="window.location.href='account.html'">Go to My Account</button>
+      </section>      <!-- ============ STEP: FORGOT PASSWORD (email) ============ -->
+      <section class="step" id="step-forgot-email">
+        <div class="step-eyebrow">Reset password</div>
+        <h1>Forgot your password?</h1>
+        <p class="step-sub">Enter the email linked to your account and we'll send a reset code.</p>        <form id="forgotEmailForm" novalidate>
+          <div class="field">
+            <label for="fp-email">Email address</label>
+            <input type="email" id="fp-email" placeholder="you@example.com" autocomplete="email">
+            <div class="field-error" id="fp-email-error">Enter a valid email address.</div>
+          </div>          <button type="submit" class="btn-primary">Send Reset Code</button>
+        </form>        <p class="step-foot"><a onclick="goToStep('step-login')">← Back to sign in</a></p>
+      </section>      <!-- ============ STEP: FORGOT OTP ============ -->
+      <section class="step" id="step-forgot-otp">
+        <div class="step-eyebrow">Verify it's you</div>
+        <h1>Enter the reset code</h1>
+        <p class="step-sub">We sent a 6-digit code to <b id="fp-otp-email-display">you@example.com</b>.</p>        <div class="otp-row" id="fp-otp-row">
+          <input class="otp-box" maxlength="1" inputmode="numeric" data-otp="forgot">
+          <input class="otp-box" maxlength="1" inputmode="numeric" data-otp="forgot">
+          <input class="otp-box" maxlength="1" inputmode="numeric" data-otp="forgot">
+          <input class="otp-box" maxlength="1" inputmode="numeric" data-otp="forgot">
+          <input class="otp-box" maxlength="1" inputmode="numeric" data-otp="forgot">
+          <input class="otp-box" maxlength="1" inputmode="numeric" data-otp="forgot">
+        </div>
+        <div class="field-error" id="fp-otp-error" style="margin-bottom:20px;">Incorrect code. Please try again.</div>        <div class="otp-meta">
+          <span id="fp-resend-timer">Resend code in 30s</span>
+          <span class="resend disabled" id="fp-resend-btn" onclick="resendOtp('forgot')">Resend code</span>
+        </div>        <button class="btn-primary" id="fp-verify-btn" onclick="verifyOtp('forgot')">Verify Code</button>        <div class="demo-note">Demo mode — no real email is sent. Your code is <b id="fp-demo-code">------</b></div>        <p class="step-foot"><a onclick="goToStep('step-forgot-email')">← Use a different email</a></p>
+      </section>      <!-- ============ STEP: RESET PASSWORD ============ -->
+      <section class="step" id="step-reset-password">
+        <div class="step-eyebrow">Almost done</div>
+        <h1>Set a new password</h1>
+        <p class="step-sub">Choose a new password for your account.</p>        <form id="resetPwForm" novalidate>
+          <div class="field">
+            <label for="rp-pw">New password</label>
+            <div class="input-wrap">
+              <input type="password" id="rp-pw" placeholder="Create a new password" autocomplete="new-password">
+              <button type="button" class="toggle-pw" data-target="rp-pw" aria-label="Show password">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <div class="pw-hint">At least 8 characters, with a number.</div>
+            <div class="field-error" id="rp-pw-error">Password must be at least 8 characters and include a number.</div>
+          </div>          <div class="field">
+            <label for="rp-pw-confirm">Confirm new password</label>
+            <div class="input-wrap">
+              <input type="password" id="rp-pw-confirm" placeholder="Re-enter new password" autocomplete="new-password">
+              <button type="button" class="toggle-pw" data-target="rp-pw-confirm" aria-label="Show password">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <div class="field-error" id="rp-pw-confirm-error">Passwords do not match.</div>
+          </div>          <button type="submit" class="btn-primary">Reset Password</button>
+        </form>
+      </section>      <!-- ============ STEP: RESET SUCCESS ============ -->
+      <section class="step center-text" id="step-reset-success">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h1>Password updated</h1>
+        <p class="step-sub">Your password has been reset successfully. You can now sign in.</p>
+        <button class="btn-primary" onclick="goToStep('step-login')">Continue to Sign In</button>
+      </section>    </div>
+  </div>
+</div><div class="toast" id="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <span id="toast-msg">Message</span>
+</div><script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  /* ---------- STATE ---------- */
+  let signupData = {};
+  let currentOtp = { signup: '', forgot: '' };
+  let resendTimers = {};  /* ---------- STEP NAVIGATION ---------- */
+  function goToStep(id){
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }  /* ---------- TOAST ---------- */
+  function showToast(msg){
+    const toast = document.getElementById('toast');
+    document.getElementById('toast-msg').textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toast._timeout);
+    toast._timeout = setTimeout(() => toast.classList.remove('show'), 3200);
+  }  /* ---------- PASSWORD VISIBILITY ---------- */
+  document.querySelectorAll('.toggle-pw').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.target);
+      target.type = target.type === 'password' ? 'text' : 'password';
+    });
+  });  /* ---------- VALIDATION HELPERS ---------- */
+  function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+  function isValidPhone(v){ return /^[+\d][\d\s()-]{7,}$/.test(v.trim()); }
+  function isValidPassword(v){ return v.length >= 8 && /\d/.test(v); }  function setError(inputId, errorId, show){
+    document.getElementById(inputId).classList.toggle('error', show);
+    document.getElementById(errorId).classList.toggle('show', show);
+  }  function generateOtp(){
+    return String(Math.floor(100000 + Math.random() * 900000));
+  }  /* ---------- OTP BOX BEHAVIOR ---------- */
+  function setupOtpRow(rowId){
+    const boxes = document.querySelectorAll(`#${rowId} .otp-box`);
+    boxes.forEach((box, i) => {
+      box.addEventListener('input', () => {
+        box.value = box.value.replace(/[^0-9]/g, '').slice(0,1);
+        box.classList.remove('error');
+        if (box.value && i < boxes.length - 1) boxes[i+1].focus();
+      });
+      box.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace' && !box.value && i > 0) boxes[i-1].focus();
+      });
+      box.addEventListener('paste', (e) => {
+        e.preventDefault();
+        const paste = (e.clipboardData || window.clipboardData).getData('text').replace(/[^0-9]/g,'').slice(0,6);
+        paste.split('').forEach((char, idx) => { if(boxes[idx]) boxes[idx].value = char; });
+        if (paste.length > 0) boxes[Math.min(paste.length, boxes.length) - 1].focus();
+      });
+    });
+  }
+  setupOtpRow('su-otp-row');
+  setupOtpRow('fp-otp-row');  function getOtpValue(prefix){
+    const boxes = document.querySelectorAll(`#${prefix}-otp-row .otp-box`);
+    return Array.from(boxes).map(b => b.value).join('');
+  }
+  function clearOtpBoxes(prefix){
+    document.querySelectorAll(`#${prefix}-otp-row .otp-box`).forEach(b => { b.value=''; b.classList.remove('error'); });
+  }
+  function shakeOtpError(prefix){
+    document.querySelectorAll(`#${prefix}-otp-row .otp-box`).forEach(b => b.classList.add('error'));
+    document.getElementById(`${prefix === 'su' ? 'su' : 'fp'}-otp-error`).classList.add('show');
+  }  /* ---------- RESEND TIMER ---------- */
+  function startResendTimer(kind){
+    const prefix = kind === 'signup' ? 'su' : 'fp';
+    const timerEl = document.getElementById(`${prefix}-resend-timer`);
+    const btnEl = document.getElementById(`${prefix}-resend-btn`);
+    let seconds = 30;
+    btnEl.classList.add('disabled');
+    timerEl.style.display = 'inline';
+    clearInterval(resendTimers[kind]);
+    resendTimers[kind] = setInterval(() => {
+      seconds--;
+      timerEl.textContent = `Resend code in ${seconds}s`;
+      if (seconds <= 0){
+        clearInterval(resendTimers[kind]);
+        timerEl.style.display = 'none';
+        btnEl.classList.remove('disabled');
+      }
+    }, 1000);
+  }  function sendOtp(kind, email){
+    const code = generateOtp();
+    currentOtp[kind] = code;
+    const prefix = kind === 'signup' ? 'su' : 'fp';
+    document.getElementById(`${prefix}-demo-code`).textContent = code;
+    document.getElementById(`${prefix}-otp-email-display`).textContent = email;
+    clearOtpBoxes(prefix);
+    document.getElementById(`${prefix}-otp-error`).classList.remove('show');
+    startResendTimer(kind);
+    showToast(`OTP sent to ${email}`);
+  }  function resendOtp(kind){
+    const email = kind === 'signup' ? signupData.email : document.getElementById('fp-email').value.trim();
+    sendOtp(kind, email);
+  }  function verifyOtp(kind){
+    const prefix = kind === 'signup' ? 'su' : 'fp';
+    const entered = getOtpValue(prefix);
+    if (entered.length < 6){
+      shakeOtpError(prefix);
+      return;
+    }
+    if (entered !== currentOtp[kind]){
+      shakeOtpError(prefix);
+      return;
+    }
+    document.getElementById(`${prefix}-otp-error`).classList.remove('show');
+    if (kind === 'signup'){
+      goToStep('step-signup-password');
+    } else {
+      goToStep('step-reset-password');
+    }
+  }  /* ---------- LOGIN FORM ---------- */
+  document.getElementById('loginForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value.trim();
+    const pw = document.getElementById('login-pw').value;
+    let valid = true;    if (!isValidEmail(email)){ setError('login-email','login-email-error',true); valid = false; }
+    else setError('login-email','login-email-error',false);    if (!pw){ setError('login-pw','login-pw-error',true); valid = false; }
+    else setError('login-pw','login-pw-error',false);    if (!valid) return;
+    if (klo_isAdminCredentials(email, pw)){
+      klo_setUser({ name: 'Admin', email: KLO_CONFIG.adminEmail, phone: '', isAdmin: true });
+      showToast('Signed in as admin');
+      setTimeout(() => { window.location.href = 'admin.html'; }, 700);
+      return;
+    }
+    if (email.toLowerCase() === KLO_CONFIG.adminEmail.toLowerCase()){
+      setError('login-pw','login-pw-error',true);
+      document.getElementById('login-pw-error').textContent = 'Incorrect password.';
+      return;
+    }
+    const match = klo_findUser(email, pw);
+    if (!match){
+      const exists = klo_findUserByEmail(email);
+      if (exists){
+        setError('login-pw','login-pw-error',true);
+        document.getElementById('login-pw-error').textContent = 'Incorrect password.';
+      } else {
+        setError('login-email','login-email-error',true);
+        document.getElementById('login-email-error').textContent = 'No account found with this email. Try creating one.';
+      }
+      return;
+    }    klo_setUser({ name: match.name, email: match.email, phone: match.phone });
+    showToast('Signed in successfully');
+    setTimeout(() => { window.location.href = 'account.html'; }, 700);
+  });  /* ---------- SIGNUP DETAILS FORM ---------- */
+  document.getElementById('signupForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('su-name').value.trim();
+    const email = document.getElementById('su-email').value.trim();
+    const phone = document.getElementById('su-phone').value.trim();
+    let valid = true;    if (!name){ setError('su-name','su-name-error',true); valid = false; }
+    else setError('su-name','su-name-error',false);    if (!isValidEmail(email)){ setError('su-email','su-email-error',true); valid = false; }
+    else setError('su-email','su-email-error',false);    if (!isValidPhone(phone)){ setError('su-phone','su-phone-error',true); valid = false; }
+    else setError('su-phone','su-phone-error',false);    if (!valid) return;    signupData = { name, email, phone };
+    sendOtp('signup', email);
+    goToStep('step-signup-otp');
+  });  /* ---------- SIGNUP PASSWORD FORM ---------- */
+  document.getElementById('signupPwForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const pw = document.getElementById('su-pw').value;
+    const confirm = document.getElementById('su-pw-confirm').value;
+    let valid = true;    if (!isValidPassword(pw)){ setError('su-pw','su-pw-error',true); valid = false; }
+    else setError('su-pw','su-pw-error',false);    if (pw !== confirm || !confirm){ setError('su-pw-confirm','su-pw-confirm-error',true); valid = false; }
+    else setError('su-pw-confirm','su-pw-confirm-error',false);    if (!valid) return;    signupData.password = pw;    if (klo_findUserByEmail(signupData.email) || signupData.email.toLowerCase() === KLO_CONFIG.adminEmail.toLowerCase()){
+      showToast('An account with this email already exists');
+      return;
+    }    klo_registerUser({ name: signupData.name, email: signupData.email, phone: signupData.phone, password: pw });
+    klo_setUser({ name: signupData.name, email: signupData.email, phone: signupData.phone });    document.getElementById('su-success-name').textContent = signupData.name.split(' ')[0];
+    goToStep('step-signup-success');
+  });  /* ---------- FORGOT PASSWORD: EMAIL FORM ---------- */
+  document.getElementById('forgotEmailForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('fp-email').value.trim();
+    if (!isValidEmail(email)){ setError('fp-email','fp-email-error',true); return; }
+    setError('fp-email','fp-email-error',false);    sendOtp('forgot', email);
+    goToStep('step-forgot-otp');
+  });  /* ---------- RESET PASSWORD FORM ---------- */
+  document.getElementById('resetPwForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const pw = document.getElementById('rp-pw').value;
+    const confirm = document.getElementById('rp-pw-confirm').value;
+    let valid = true;    if (!isValidPassword(pw)){ setError('rp-pw','rp-pw-error',true); valid = false; }
+    else setError('rp-pw','rp-pw-error',false);    if (pw !== confirm || !confirm){ setError('rp-pw-confirm','rp-pw-confirm-error',true); valid = false; }
+    else setError('rp-pw-confirm','rp-pw-confirm-error',false);    if (!valid) return;    const resetEmail = document.getElementById('fp-email').value.trim();
+    klo_updateUserPassword(resetEmail, pw);    goToStep('step-reset-success');
+  });
+</script>  
+</body>
+</html>

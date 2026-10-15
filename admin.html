@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — KLO</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231f4959'/%3E%3Ctext x='50' y='69' font-size='56' font-family='Georgia,serif' fill='white' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+<meta name="description" content="KLO internal admin mockup — products and orders.">
+<meta property="og:title" content="Admin Dashboard — KLO">
+<meta property="og:description" content="KLO internal admin mockup — products and orders.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KLO">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+:root{
+  --bg:#ffffff;
+  --ink:#242424;
+  --slate:#5c7c89;
+  --teal:#1f4959;
+  --midnight:#011425;
+  --hairline: rgba(36,36,36,0.12);
+  --error:#b23b3b;
+  --success:#3b7a5c;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif; color:var(--ink); background:#f7f8f8; line-height:1.5; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif; letter-spacing:-0.01em;}
+a{text-decoration:none; color:inherit;}
+button{font-family:inherit; border:none; cursor:pointer;}
+img{display:block; max-width:100%;}
+.container{max-width:1280px; margin:0 auto; padding:0 32px;}
+
+/* ---- login gate ---- */
+#loginScreen{
+  min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--midnight);
+}
+.login-box{
+  background:#fff; border-radius:6px; padding:44px 40px; width:100%; max-width:360px; text-align:center;
+}
+.login-box .logo{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:24px; color:var(--midnight); margin-bottom:6px;}
+.login-box .tag{font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--slate); margin-bottom:28px;}
+.login-box input{
+  width:100%; padding:12px 14px; border:1px solid var(--hairline); border-radius:4px; font-size:14px; margin-bottom:14px;
+}
+.login-box input:focus{outline:2px solid var(--slate); outline-offset:1px;}
+.login-box button{
+  width:100%; padding:13px; background:var(--midnight); color:#fff; border-radius:4px; font-size:13.5px; font-weight:600;
+  letter-spacing:0.02em; transition:background .2s ease;
+}
+.login-box button:hover{background:var(--teal);}
+.login-err{color:var(--error); font-size:12.5px; margin-bottom:10px; min-height:16px;}
+.login-note{font-size:11px; color:#999; margin-top:20px; line-height:1.5;}
+
+/* ---- admin shell ---- */
+#adminApp{display:none;}
+.admin-topbar{
+  background:var(--midnight); color:#fff; padding:18px 0; position:sticky; top:0; z-index:10;
+}
+.admin-topbar .container{display:flex; align-items:center; justify-content:space-between;}
+.admin-logo{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:20px; display:flex; align-items:baseline; gap:8px;}
+.admin-logo span{font-family:'Inter',sans-serif; font-weight:400; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--slate);}
+.admin-logout{
+  font-size:12.5px; font-weight:600; color:#fff; border:1px solid rgba(255,255,255,0.3); padding:8px 16px; border-radius:4px;
+  transition:border-color .2s ease, background .2s ease;
+}
+.admin-actions{display:flex; gap:10px; align-items:center;}
+.admin-actions .admin-logout{white-space:nowrap; text-decoration:none; background:none; cursor:pointer;}
+.admin-logout:hover{background:rgba(255,255,255,0.1); border-color:#fff;}
+
+.admin-main{padding:40px 0 80px;}
+.admin-main h1{font-size:26px; margin-bottom:6px; color:var(--midnight);}
+.admin-sub{font-size:13.5px; color:#888; margin-bottom:32px;}
+
+/* stat cards */
+.stat-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:44px;}
+.stat-card{
+  background:#fff; border:1px solid var(--hairline); border-radius:6px; padding:24px;
+}
+.stat-card .stat-label{font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--slate); margin-bottom:10px;}
+.stat-card .stat-value{font-family:'Space Grotesk',sans-serif; font-size:30px; font-weight:700; color:var(--midnight);}
+
+.admin-section{background:#fff; border:1px solid var(--hairline); border-radius:6px; padding:28px; margin-bottom:32px;}
+.admin-section-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; flex-wrap:wrap; gap:12px;}
+.admin-section-head h2{font-size:18px; color:var(--midnight);}
+.btn{
+  padding:10px 18px; border-radius:4px; font-size:12.5px; font-weight:600; letter-spacing:0.02em; cursor:pointer;
+  transition:background .2s ease, border-color .2s ease, color .2s ease;
+}
+.btn-primary{background:var(--midnight); color:#fff;}
+.btn-primary:hover{background:var(--teal);}
+.btn-ghost{background:none; border:1px solid var(--hairline); color:var(--ink);}
+.btn-ghost:hover{border-color:var(--slate); color:var(--teal);}
+.btn-danger{background:none; border:1px solid rgba(178,59,59,0.35); color:var(--error);}
+.btn-danger:hover{background:rgba(178,59,59,0.08);}
+
+table{width:100%; border-collapse:collapse; font-size:13.5px;}
+thead th{
+  text-align:left; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--slate);
+  padding:10px 12px; border-bottom:1px solid var(--hairline);
+}
+tbody td{padding:14px 12px; border-bottom:1px solid var(--hairline); vertical-align:middle;}
+tbody tr:last-child td{border-bottom:none;}
+.p-thumb{width:44px; height:56px; object-fit:cover; border-radius:3px; background:#eee;}
+.row-actions{display:flex; gap:8px;}
+.row-actions button{
+  padding:6px 12px; font-size:11.5px; font-weight:600; border-radius:3px; border:1px solid var(--hairline); background:#fff; cursor:pointer;
+}
+.row-actions button:hover{border-color:var(--slate); color:var(--teal);}
+.row-actions .del:hover{border-color:var(--error); color:var(--error);}
+.status-select{
+  font-family:inherit; font-size:12.5px; padding:6px 10px; border-radius:3px; border:1px solid var(--hairline); background:#fff; cursor:pointer;
+}
+.overlay-tag{font-size:10px; text-transform:uppercase; letter-spacing:0.05em; color:var(--slate); background:rgba(31,73,89,0.08); padding:2px 7px; border-radius:2px; margin-left:6px;}
+.empty-note{padding:30px 0; text-align:center; color:#888; font-size:13.5px;}
+
+/* product form modal */
+.modal-backdrop{
+  display:none; position:fixed; inset:0; background:rgba(1,20,37,0.55); z-index:200; align-items:center; justify-content:center; padding:20px;
+}
+.modal-backdrop.open{display:flex;}
+.modal-box{background:#fff; border-radius:6px; padding:32px; width:100%; max-width:420px;}
+.modal-box h3{font-size:17px; color:var(--midnight); margin-bottom:20px;}
+.field{margin-bottom:16px;}
+.field label{display:block; font-size:12px; font-weight:600; color:var(--slate); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.04em;}
+.field input, .field select{
+  width:100%; padding:11px 12px; border:1px solid var(--hairline); border-radius:4px; font-size:13.5px; font-family:inherit;
+}
+.modal-actions{display:flex; gap:10px; margin-top:22px; justify-content:flex-end;}
+
+@media (max-width:760px){
+  .stat-grid{grid-template-columns:1fr;}
+  table, thead, tbody, tr{display:block;}
+  thead{display:none;}
+  tbody tr{border:1px solid var(--hairline); border-radius:6px; margin-bottom:12px; padding:10px;}
+  tbody td{border:none; display:flex; justify-content:space-between; gap:12px; align-items:center;}
+  tbody td::before{content:attr(data-label); font-size:11px; text-transform:uppercase; letter-spacing:0.04em; color:var(--slate); font-weight:600;}
+}
+</style>
+<link rel="stylesheet" href="klo.css">
+<script src="klo.js"></script>
+</head>
+<body>
+
+<!--
+  ADMIN MOCKUP NOTICE (not real security):
+  This login gate is a purely client-side, hardcoded-password check for demo purposes only.
+  Anyone can bypass it by editing localStorage or reading this file's source. There is no
+  server, no real authentication, and no authorization model. Do not use this pattern for
+  anything beyond a front-end demo.
+-->
+
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="logo">KLO</div>
+    <div class="tag">Admin Console</div>
+    <div class="login-err" id="loginErr">This area is for the store admin only.</div>
+    <a href="auth.html" id="loginBtn" style="display:block;text-align:center;text-decoration:none;">Sign in with admin account</a>
+    <div class="login-note">Use the admin email and password on the normal sign-in page. Front-end demo only — not real security.</div>
+  </div>
+</div>
+
+<div id="adminApp">
+  <div class="admin-topbar">
+    <div class="container">
+      <div class="admin-logo">KLO <span>Admin</span></div>
+      <div class="admin-actions"><a class="admin-logout" href="klo-homepage.html">← Back to Store</a><button class="admin-logout" id="logoutBtn">Log Out</button></div>
+    </div>
+  </div>
+
+  <div class="admin-main">
+    <div class="container">
+      <h1>Dashboard</h1>
+      <p class="admin-sub">Front-end mockup — data is read from and written to this browser's localStorage only. Messages and subscribers listed here are only those submitted from this browser; set KLO_CONFIG.formEndpoint in klo.js to have them emailed to you.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Orders</div>
+          <div class="stat-value" id="statOrders">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Revenue</div>
+          <div class="stat-value" id="statRevenue">$0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Total Products</div>
+          <div class="stat-value" id="statProducts">0</div>
+        </div>
+      </div>
+
+      <div class="admin-section">
+        <div class="admin-section-head">
+          <h2>Products</h2>
+          <button class="btn btn-primary" id="addProductBtn">+ Add Product</button>
+        </div>
+        <table>
+          <thead>
+            <tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Source</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="productsBody"></tbody>
+        </table>
+        <div class="empty-note" id="productsEmpty" style="display:none;">No products yet.</div>
+      </div>
+
+      <div class="admin-section">
+        <div class="admin-section-head">
+          <h2>Orders</h2>
+        </div>
+        <table>
+          <thead>
+            <tr><th>Order #</th><th>Date</th><th>Customer</th><th>Total</th><th>Status</th></tr>
+          </thead>
+          <tbody id="ordersBody"></tbody>
+        </table>
+        <div class="empty-note" id="ordersEmpty" style="display:none;">No orders placed yet.</div>
+      </div>
+
+      <div class="admin-section">
+        <div class="admin-section-head">
+          <h2>Messages</h2>
+          <button class="btn" id="clearMessagesBtn">Clear all</button>
+        </div>
+        <table>
+          <thead>
+            <tr><th>Date</th><th>From</th><th>Subject</th><th>Message</th></tr>
+          </thead>
+          <tbody id="messagesBody"></tbody>
+        </table>
+        <div class="empty-note" id="messagesEmpty" style="display:none;">No contact messages yet.</div>
+      </div>
+
+      <div class="admin-section">
+        <div class="admin-section-head">
+          <h2>Newsletter subscribers</h2>
+          <button class="btn" id="exportSubsBtn">Export CSV</button>
+        </div>
+        <table>
+          <thead>
+            <tr><th>Email</th><th>Subscribed</th></tr>
+          </thead>
+          <tbody id="subsBody"></tbody>
+        </table>
+        <div class="empty-note" id="subsEmpty" style="display:none;">No subscribers yet.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add/Edit product modal -->
+<div class="modal-backdrop" id="productModal">
+  <div class="modal-box">
+    <h3 id="modalTitle">Add Product</h3>
+    <input type="hidden" id="pf-id">
+    <div class="field">
+      <label>Name</label>
+      <input type="text" id="pf-name" placeholder="Waxed Field Jacket">
+    </div>
+    <div class="field">
+      <label>Price (USD)</label>
+      <input type="number" id="pf-price" placeholder="248" step="0.01" min="0">
+    </div>
+    <div class="field">
+      <label>Category</label>
+      <input type="text" id="pf-category" placeholder="Outerwear">
+    </div>
+    <div class="field">
+      <label>Image URL</label>
+      <input type="text" id="pf-image" placeholder="https://...">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="pf-cancel">Cancel</button>
+      <button class="btn btn-primary" id="pf-save">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   ADMIN MOCKUP — NOT REAL SECURITY
+   The login check below is a hardcoded client-side string comparison.
+   It exists purely to gate the UI for demo purposes and can trivially
+   be bypassed (view source, devtools, editing localStorage directly).
+   A real admin panel would require server-side authentication.
+   ===================================================================== */
+
+/* ---------- base product catalog (same data search.html uses) ---------- */
+
+
+/* ---------- admin overlay storage (klo_admin_products) ----------
+   Since KLO_PRODUCTS above is a hardcoded JS object (mirroring search.html)
+   rather than a real backend catalog, admin-added/edited/deleted products
+   are tracked as an overlay in localStorage under 'klo_admin_products':
+   { added: { id: {id,name,price,category,image} }, edited: { id: {...} }, deleted: [id, ...] }
+   This keeps the admin page internally consistent without rewriting how
+   product.html/search.html source their data. */
+function klo_getOverlay(){
+  try { return JSON.parse(localStorage.getItem('klo_admin_products') || 'null') || { added:{}, edited:{}, deleted:[] }; }
+  catch(e){ return { added:{}, edited:{}, deleted:[] }; }
+}
+function klo_saveOverlay(o){
+  localStorage.setItem('klo_admin_products', JSON.stringify(o));
+}
+function getMergedProducts(){
+  const overlay = klo_getOverlay();
+  let list = Object.values(KLO_PRODUCTS)
+    .filter(p => overlay.deleted.indexOf(p.id) === -1)
+    .map(p => overlay.edited[p.id] ? Object.assign({}, p, overlay.edited[p.id], { _source:'base (edited)' }) : Object.assign({}, p, { _source:'base' }));
+  Object.values(overlay.added).forEach(p => list.push(Object.assign({}, p, { _source:'admin-added' })));
+  return list;
+}
+
+/* ---------- orders (klo_orders, same shape checkout.html writes) ---------- */
+
+function klo_saveOrders(orders){
+  localStorage.setItem('klo_orders', JSON.stringify(orders));
+}
+function formatMoney(n){
+  return '$' + Number(n || 0).toLocaleString('en-US', { minimumFractionDigits:2, maximumFractionDigits:2 });
+}
+function formatDate(iso){
+  if(!iso) return '—';
+  const d = new Date(iso);
+  if (isNaN(d)) return '—';
+  return d.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+}
+
+/* ---------- login gate: only the signed-in admin account gets in ---------- */
+function checkLogin(){
+  if (klo_isAdmin()) showApp();
+}
+function showApp(){
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('adminApp').style.display = 'block';
+  renderAll();
+}
+document.getElementById('logoutBtn').addEventListener('click', function(){
+  klo_logout();
+  window.location.href = 'klo-homepage.html';
+});
+
+/* ---------- render: stats ---------- */
+function renderStats(){
+  const orders = klo_getOrders();
+  const products = getMergedProducts();
+  const revenue = orders.reduce((sum, o) => sum + (Number(o.total) || 0), 0);
+  document.getElementById('statOrders').textContent = orders.length;
+  document.getElementById('statRevenue').textContent = formatMoney(revenue);
+  document.getElementById('statProducts').textContent = products.length;
+}
+
+/* ---------- render: products ---------- */
+function renderProducts(){
+  const products = getMergedProducts();
+  const body = document.getElementById('productsBody');
+  const empty = document.getElementById('productsEmpty');
+  if (products.length === 0){
+    body.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  body.innerHTML = products.map(p => `
+    <tr>
+      <td data-label="Image"><img loading="lazy" decoding="async" class="p-thumb" src="${p.image || ''}" alt="${p.name || ''}" onerror="this.style.visibility='hidden'"></td>
+      <td data-label="Name">${p.name || ''}</td>
+      <td data-label="Category">${p.category || ''}</td>
+      <td data-label="Price">${formatMoney(p.price)}</td>
+      <td data-label="Source">${p._source}${p._source === 'admin-added' || p._source === 'base (edited)' ? '<span class="overlay-tag">overlay</span>' : ''}</td>
+      <td data-label="Actions">
+        <div class="row-actions">
+          <button onclick="editProduct('${p.id}')">Edit</button>
+          <button class="del" onclick="deleteProduct('${p.id}')">Delete</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+/* ---------- product modal ---------- */
+const productModal = document.getElementById('productModal');
+document.getElementById('addProductBtn').addEventListener('click', function(){
+  document.getElementById('modalTitle').textContent = 'Add Product';
+  document.getElementById('pf-id').value = '';
+  document.getElementById('pf-name').value = '';
+  document.getElementById('pf-price').value = '';
+  document.getElementById('pf-category').value = '';
+  document.getElementById('pf-image').value = '';
+  productModal.classList.add('open');
+});
+document.getElementById('pf-cancel').addEventListener('click', function(){
+  productModal.classList.remove('open');
+});
+productModal.addEventListener('click', function(ev){
+  if (ev.target === productModal) productModal.classList.remove('open');
+});
+
+function editProduct(id){
+  const p = getMergedProducts().find(x => x.id === id);
+  if (!p) return;
+  document.getElementById('modalTitle').textContent = 'Edit Product';
+  document.getElementById('pf-id').value = p.id;
+  document.getElementById('pf-name').value = p.name || '';
+  document.getElementById('pf-price').value = p.price || '';
+  document.getElementById('pf-category').value = p.category || '';
+  document.getElementById('pf-image').value = p.image || '';
+  productModal.classList.add('open');
+}
+
+function deleteProduct(id){
+  if (!confirm('Delete this product? This only affects the admin view (overlay), not the live site catalog.')) return;
+  const overlay = klo_getOverlay();
+  if (overlay.added[id]){
+    delete overlay.added[id];
+  } else {
+    delete overlay.edited[id];
+    if (overlay.deleted.indexOf(id) === -1) overlay.deleted.push(id);
+  }
+  klo_saveOverlay(overlay);
+  renderAll();
+}
+
+document.getElementById('pf-save').addEventListener('click', function(){
+  const id = document.getElementById('pf-id').value;
+  const name = document.getElementById('pf-name').value.trim();
+  const price = parseFloat(document.getElementById('pf-price').value);
+  const category = document.getElementById('pf-category').value.trim();
+  const image = document.getElementById('pf-image').value.trim();
+
+  if (!name || isNaN(price)){
+    alert('Please provide at least a name and a valid price.');
+    return;
+  }
+
+  const overlay = klo_getOverlay();
+  if (id){
+    // editing an existing product (base or admin-added)
+    if (overlay.added[id]){
+      overlay.added[id] = { id, name, price, category, image };
+    } else {
+      overlay.edited[id] = { name, price, category, image };
+    }
+  } else {
+    // brand-new admin product
+    const newId = 'admin_' + Date.now();
+    overlay.added[newId] = { id:newId, name, price, category, image };
+  }
+  klo_saveOverlay(overlay);
+  productModal.classList.remove('open');
+  renderAll();
+});
+
+/* ---------- render: orders ---------- */
+const ORDER_STATUSES = ['Processing', 'Shipped', 'Delivered', 'Cancelled'];
+function renderOrders(){
+  const orders = klo_getOrders();
+  const body = document.getElementById('ordersBody');
+  const empty = document.getElementById('ordersEmpty');
+  if (orders.length === 0){
+    body.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+  body.innerHTML = orders.map((o, idx) => {
+    const status = o.status || 'Processing';
+    const customer = (o.shippingInfo && (o.shippingInfo.name || o.shippingInfo.email)) || 'Guest';
+    return `
+    <tr>
+      <td data-label="Order #">${o.orderNumber || '—'}</td>
+      <td data-label="Date">${formatDate(o.placedAt)}</td>
+      <td data-label="Customer">${customer}</td>
+      <td data-label="Total">${formatMoney(o.total)}</td>
+      <td data-label="Status">
+        <select class="status-select" onchange="updateOrderStatus(${idx}, this.value)">
+          ${ORDER_STATUSES.map(s => `<option value="${s}" ${s === status ? 'selected' : ''}>${s}</option>`).join('')}
+        </select>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function updateOrderStatus(idx, newStatus){
+  const orders = klo_getOrders();
+  if (!orders[idx]) return;
+  orders[idx].status = newStatus;
+  klo_saveOrders(orders);
+  renderStats();
+}
+
+/* ---------- render: contact messages + newsletter subscribers (written by klo.js forms) ---------- */
+function esc(s){
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+}
+function renderMessages(){
+  const list = klo_readList('klo_messages');
+  document.getElementById('messagesBody').innerHTML = list.map(m => `
+    <tr>
+      <td data-label="Date">${formatDate(m.receivedAt)}</td>
+      <td data-label="From">${esc(m.name)}<br><a href="mailto:${esc(m.email)}">${esc(m.email)}</a></td>
+      <td data-label="Subject">${esc(m.subject) || '—'}</td>
+      <td data-label="Message" style="white-space:pre-wrap;">${esc(m.message)}</td>
+    </tr>`).join('');
+  document.getElementById('messagesEmpty').style.display = list.length ? 'none' : 'block';
+}
+function renderSubscribers(){
+  const list = klo_readList('klo_subscribers');
+  document.getElementById('subsBody').innerHTML = list.map(s => `
+    <tr>
+      <td data-label="Email">${esc(s.email)}</td>
+      <td data-label="Subscribed">${formatDate(s.subscribedAt)}</td>
+    </tr>`).join('');
+  document.getElementById('subsEmpty').style.display = list.length ? 'none' : 'block';
+}
+document.getElementById('clearMessagesBtn').addEventListener('click', function(){
+  if (!confirm('Delete all stored contact messages?')) return;
+  localStorage.removeItem('klo_messages');
+  renderMessages();
+});
+document.getElementById('exportSubsBtn').addEventListener('click', function(){
+  const rows = klo_readList('klo_subscribers').map(s => s.email + ',' + s.subscribedAt);
+  const blob = new Blob(['email,subscribed_at\n' + rows.join('\n')], { type:'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'klo-subscribers.csv';
+  a.click();
+});
+
+function renderAll(){
+  renderStats();
+  renderProducts();
+  renderOrders();
+  renderMessages();
+  renderSubscribers();
+}
+
+checkLogin();
+</script>
+
+
+
+</body>
+</html>
